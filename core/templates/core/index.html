@@ -1,0 +1,296 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="flexslider-principal flexslider">
+                <ul class="slides">
+                    <li><img src="{% static 'img/demo-slider/sl-beach-park.jpg' %}" /></li>
+                    <li><img src="{% static 'img/demo-slider/sl-teatro.jpg' %}" /></li>
+                    <li><img src="{% static 'img/demo-slider/sl-bexiga.jpg' %}" /></li>
+                    <li><img src="{% static 'img/demo-slider/sl-ponte.jpg' %}" /></li>
+                    <li><img src="{% static 'img/demo-slider/sl-catedral.jpg' %}" /></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-3 parceiros">
+            <div class="row">
+                <div class="col-md-12 title">
+                    <strong>Parceiros</strong>
+                </div>
+                <div class="col-md-12">
+                    <a href="#" class="thumbnail">
+                        <img data-src="holder.js/100%x77" alt="...">
+                    </a>
+                </div>
+                <div class="col-md-12">
+                    <a href="#" class="thumbnail">
+                        <img data-src="holder.js/100%x77" alt="...">
+                    </a>
+                </div>
+                <div class="col-md-12">
+                    <a href="#" class="thumbnail">
+                        <img data-src="holder.js/100%x77" alt="...">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <h2>Imóveis em destaque</h2>
+        </div>
+
+        <div class="col-md-3 destaque-desc">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Quarto/Sala <span class="label label-danger pull-right">#4321 Alugado</span></h5>
+                </div>
+                <div class="col-md-12">
+                    <div class="flexslider flexslider-destaque">
+                        <ul class="slides">
+                            <li data-thumb="{% static 'img/demo-slider/im-1-1-t.jpg' %}">
+                                <a href="http://google.com"><img src="{% static 'img/demo-slider/im-1-1-d.jpg' %}"/></a>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-2-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-2-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-3-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-3-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-4-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-4-d.jpg' %}"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <strong>ED. SAN PIETRO</strong><br>
+                    R Carolina Sucupira,878 Ap-700<br>
+                    A partir de <span class="label destaque-preco">R$ 100</span> a diária
+                </div>
+            </div>
+        </div><!-- end-box -->
+
+        <div class="col-md-3 destaque-desc">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Convencional <span class="label label-default pull-right">#6547</span></h5>
+                </div>
+                <div class="col-md-12">
+                    <div class="flexslider flexslider-destaque">
+                        <ul class="slides">
+                            <li data-thumb="{% static 'img/demo-slider/im-1-2-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-2-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-1-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-1-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-4-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-4-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-3-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-3-d.jpg' %}"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <strong>ED. SAN PIETRO</strong><br>
+                    R Carolina Sucupira,878 Ap-700<br>
+                    A partir de <span class="label destaque-preco">R$ 150</span> a diária
+                </div>
+            </div>
+        </div><!-- end-box -->
+
+        <div class="col-md-3 destaque-desc">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Comercial <span class="label label-danger pull-right">#4321 Alugado</span></h5>
+                </div>
+                <div class="col-md-12">
+                    <div class="flexslider flexslider-destaque">
+                        <ul class="slides">
+                            <li data-thumb="{% static 'img/demo-slider/im-1-3-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-3-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-4-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-4-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-1-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-1-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-2-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-2-d.jpg' %}"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <strong>ED. SAN PIETRO</strong><br>
+                    R Carolina Sucupira,878 Ap-700<br>
+                    A partir de <span class="label destaque-preco">R$ 70</span> a diária
+                </div>
+            </div>
+        </div><!-- end-box -->
+
+        <div class="col-md-3 destaque-desc">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>2 Quartos <span class="label label-default pull-right">#9876</span></h5>
+                </div>
+                <div class="col-md-12">
+                    <div class="flexslider flexslider-destaque">
+                        <ul class="slides">
+                            <li data-thumb="{% static 'img/demo-slider/im-1-4-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-4-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-2-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-2-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-3-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-3-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-1-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-1-d.jpg' %}"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <strong>ED. SAN PIETRO</strong><br>
+                    R Carolina Sucupira,878 Ap-700<br>
+                    A partir de <span class="label destaque-preco">R$ 80</span> a diária
+                </div>
+            </div>
+        </div><!-- end-box -->
+
+        <div class="col-md-3 destaque-desc">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>2 Quartos <span class="label label-default pull-right">#9876</span></h5>
+                </div>
+                <div class="col-md-12">
+                    <div class="flexslider flexslider-destaque">
+                        <ul class="slides">
+                            <li data-thumb="{% static 'img/demo-slider/im-1-4-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-4-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-2-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-2-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-3-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-3-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-1-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-1-d.jpg' %}"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <strong>ED. SAN PIETRO</strong><br>
+                    R Carolina Sucupira,878 Ap-700<br>
+                    A partir de <span class="label destaque-preco">R$ 80</span> a diária
+                </div>
+            </div>
+        </div><!-- end-box -->
+
+        <div class="col-md-3 destaque-desc">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Comercial <span class="label label-danger pull-right">#4321 Alugado</span></h5>
+                </div>
+                <div class="col-md-12">
+                    <div class="flexslider flexslider-destaque">
+                        <ul class="slides">
+                            <li data-thumb="{% static 'img/demo-slider/im-1-3-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-3-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-4-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-4-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-1-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-1-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-2-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-2-d.jpg' %}"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <strong>ED. SAN PIETRO</strong><br>
+                    R Carolina Sucupira,878 Ap-700<br>
+                    A partir de <span class="label destaque-preco">R$ 70</span> a diária
+                </div>
+            </div>
+        </div><!-- end-box -->
+
+        <div class="col-md-3 destaque-desc">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Convencional <span class="label label-default pull-right">#6547</span></h5>
+                </div>
+                <div class="col-md-12">
+                    <div class="flexslider flexslider-destaque">
+                        <ul class="slides">
+                            <li data-thumb="{% static 'img/demo-slider/im-1-2-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-2-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-1-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-1-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-4-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-4-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-3-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-3-d.jpg' %}"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <strong>ED. SAN PIETRO</strong><br>
+                    R Carolina Sucupira,878 Ap-700<br>
+                    A partir de <span class="label destaque-preco">R$ 150</span> a diária
+                </div>
+            </div>
+        </div><!-- end-box -->
+
+        <div class="col-md-3 destaque-desc">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Quarto/Sala <span class="label label-danger pull-right">#4321 Alugado</span></h5>
+                </div>
+                <div class="col-md-12">
+                    <div class="flexslider flexslider-destaque">
+                        <ul class="slides">
+                            <li data-thumb="{% static 'img/demo-slider/im-1-1-t.jpg' %}">
+                                <a href="http://google.com"><img src="{% static 'img/demo-slider/im-1-1-d.jpg' %}"/></a>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-2-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-2-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-3-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-3-d.jpg' %}"/>
+                            </li>
+                            <li data-thumb="{% static 'img/demo-slider/im-1-4-t.jpg' %}">
+                                <img src="{% static 'img/demo-slider/im-1-4-d.jpg' %}"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <strong>ED. SAN PIETRO</strong><br>
+                    R Carolina Sucupira,878 Ap-700<br>
+                    A partir de <span class="label destaque-preco">R$ 100</span> a diária
+                </div>
+            </div>
+        </div><!-- end-box -->
+
+    </div>
+</div>
+{% endblock %}
