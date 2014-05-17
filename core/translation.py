@@ -1,9 +1,9 @@
 from modeltranslation.translator import translator, TranslationOptions
-from .models import Coisa
+from .models import Imovel, TipoImovel
 
 
 class CoisaTranslationOptions(TranslationOptions):
-    fields = ('nome',)
+    fields = ('nome', 'descricao')
 
 
-translator.register(Coisa, CoisaTranslationOptions)
+translator.register(Imovel, CoisaTranslationOptions)
