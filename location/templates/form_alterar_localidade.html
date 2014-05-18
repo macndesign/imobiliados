@@ -1,0 +1,81 @@
+<form id="form_local" class="local_modo_edicao" action="{% url 'location:set' %}" method="post">{% csrf_token %}
+    <ul class="nav nav-list" style="padding: 0">
+        <li class="label_bair_uf_cid">
+            <div class="alert alert-success" style="padding: 10px">
+                <div id="area_ajax">
+                    {{ endereco_form }}
+                </div>
+                
+                <a href="#" class="confirmar-alterar-localidade"><span class="icon-ok"></span>Confirmar</a>
+                
+                {% if endereco %}
+                    <a href="#" class="cancelar-alterar-localidade"><span class="icon-ban-circle"></span>Cancelar</a>
+                {% endif %}
+            </div>
+        </li>
+    </ul>
+</form>
+
+<script type="text/javascript">
+(function($) {$(document).ready(function() {
+    var $uf_ajax = $("#uf");
+    var $cidade_ajax = $("#cidade");
+    var $bairro_ajax = $("#bairro");
+
+    // Adicionando na div #area_ajax
+    var area_ajax = $("#area_ajax");
+    area_ajax.append($cidade_ajax);
+    area_ajax.append($bairro_ajax);
+
+    // Carrega cidades
+    $uf_ajax.on("change", function(){
+        var id_uf = $(this).val();
+        $cidade_ajax.html($option_vazio);
+        $bairro_ajax.html($option_vazio);
+        
+        $.get("/location/uf/" + id_uf, function(data){
+        	preenche('#cidade', data.cidades);
+        });
+    });
+
+    // Carrega bairros
+    $cidade_ajax.on("change", function(){
+        var id_cidade = $(this).val();
+        $.get("/location/cidade/" + id_cidade, function(data){
+        	preenche('#bairro', data.bairros);
+        });
+    });
+
+    if ($cidade_ajax.val() == "" && $bairro_ajax.val() ==  ""){
+        $cidade_ajax.attr("disabled", "disabled");
+        $bairro_ajax.attr("disabled", "disabled")
+    }
+
+    $bairro_ajax.keypress(function(event) {
+        if (event.which == 13) {
+            event.preventDefault();
+            
+            if ($uf_ajax.val() && $cidade_ajax.val() && $bairro_ajax.val()){
+                $("#form_local").submit();
+            } else {
+                $uf_ajax.focus();
+            }
+        }
+    });
+
+    $(".confirmar-alterar-localidade").click(function(event){
+        event.preventDefault();
+        if ($uf_ajax.val() && $cidade_ajax.val() && $bairro_ajax.val()){
+            $("#form_local").submit();
+        } else {
+            $uf_ajax.focus();
+        }
+    });
+
+    $(".cancelar-alterar-localidade").click(function(event){
+        event.preventDefault();
+        $("#form_local_leitura").show();
+        $("#form_local").hide();
+    });
+});})(jQuery);
+</script>

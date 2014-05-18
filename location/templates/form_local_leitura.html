@@ -1,0 +1,35 @@
+{% load locationtag %}
+
+{% if not request.session.endereco %}
+	{% location %}
+{% else %}
+	<script type="text/javascript">
+		(function($) {$(document).ready(function() {
+             $(".local_modo_edicao").hide();
+		});})(jQuery);
+	</script>
+{% endif %}
+
+<div id="form_local_leitura" class="local_modo_leitura">
+    <ul class="nav nav-list" style="padding: 0">
+        <li class="label_bair_uf_cid">
+            <div class="alert alert-success" align="center">
+                <strong class="bairro">{{ endereco.bairro.descricao }}</strong><br />
+                <strong class="cidade">{{ endereco.cidade.descricao }}</strong> <span>/</span>
+                <strong class="uf">{{ endereco.uf }}</strong><br />
+                <a href="#" class="alterar-localidade"><span class="icon-edit"></span>Alterar</a>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+(function($) {$(document).ready(function() {
+    $(".alterar-localidade").click(function(event){
+        event.preventDefault();
+        $("#form_local_leitura").hide();
+        $("#form_local").show();
+        $("#bairro").focus();
+    });
+});})(jQuery);
+</script>

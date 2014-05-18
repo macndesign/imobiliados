@@ -1,5 +1,13 @@
 from django.contrib import admin
-from .models import Coisa
+from .models import Imovel, Imagem
 
-# Register your models here.
-admin.site.register(Coisa)
+
+class ImagemInline(admin.TabularInline):
+    model = Imagem
+
+
+class ImovelAdmin(admin.ModelAdmin):
+    inlines = [ImagemInline]
+
+
+admin.site.register(Imovel, ImovelAdmin)

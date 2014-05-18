@@ -1,0 +1,53 @@
+{% if not endereco %}
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script src="{{ STATIC_URL }}js/location.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	(function($) {$(document).ready(function() {
+		   if($.browser.msie){
+			   $(".local_modo_leitura").hide();
+			   
+			   $(self.uf).focus();
+			   return;
+		   }
+		
+			var geolocation = new boralanchar.Geolocation("{% url 'location:get' %}");
+
+			geolocation.loading = function (self){
+				$(".local_modo_leitura").hide();
+
+				$(self.uf).attr('disabled', 'disabled');
+
+				$(self.cidade).attr('disabled', 'disabled');
+				$(self.bairro).attr('disabled', 'disabled');
+
+				window.setTimeout(function() {
+					$(self.uf).removeAttr('disabled');
+					$(self.cidade).removeAttr('disabled');
+					$(self.bairro).removeAttr('disabled');}, 1500);
+			}
+
+			geolocation.success = function (self, data){
+				$(self.uf).removeAttr('disabled');
+				$(self.cidade).removeAttr('disabled');
+				$(self.bairro).removeAttr('disabled');
+				
+				$(self.bairro).focus();
+			};
+
+			geolocation.fail = function (self, error){
+				$(".label_bair_uf_cid .alert").removeClass("alert-success")
+				  							  .addClass("alert-error");
+				
+				$(self.uf).removeAttr('disabled');
+				$(self.cidade).removeAttr('disabled');
+				$(self.bairro).removeAttr('disabled');
+
+				$(self.uf).focus();
+			};
+
+			geolocation.noGeolocation = geolocation.fail;			
+			
+			geolocation.start();
+	});})(jQuery);
+	</script>
+{% endif %}

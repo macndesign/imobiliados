@@ -1,0 +1,66 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_modify admin_static %}
+{% block title %}{% trans "Cadastrar endereço" %}{{ block.super }}{% endblock %}
+{% block extrahead %}
+    {{ block.super }}
+    {{ media }}
+    {{ form.media }}
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+    <script type="text/javascript" src="{% static 'js/gmaps-autocomplete.js' %}"></script>
+{% endblock %}
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/forms.css' %}" />
+{% endblock %}
+{% block coltype %}
+    {% if ordered_objects %}colMS{% else %}colM{% endif %}
+{% endblock %}
+{% block content %}
+<div id="content-main">
+    <h1>Adicionar endereço</h1>
+    <p>Adicione através do google maps o endereço do estabelecimento.</p>
+
+    {% if form.errors %}
+        <p class="errornote">
+            {% blocktrans count counter=form.errors|length %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+        </p>
+        {{ form.non_field_errors }}
+    {% endif %}
+
+    <div class="form-row field-search">
+        <div>
+            <label for="id_search" class="required">Busca</label>
+            <input type="text" name="search" id="id_search" placeholder="Digite um local" autocomplete="off" size="80">
+            <p class="help">
+                Ex: Bom Futuro, Fortaleza - Ceará
+            </p>
+        </div>
+    </div>
+
+    <form action="" method="post">{% csrf_token %}
+        <div>
+            <div class="submit-row">
+                <input type="submit" value="Salvar" class="default" name="_save">
+            </div>
+
+            <fieldset class="module aligned wide">
+                {% for field in form %}
+                    <div class="form-row{% if field.errors %} errors{% endif %} field-{{ field.name }}">
+                        {% if field.errors %}{{ field.errors }}{% endif %}
+                        <div>
+                            <label for="{{ field.auto_id }}" {% if field.field.required %}class="required"{% endif %}>{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.help_text %}
+                                <p class="help">
+                                    {{ field.help_text }}
+                                </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </fieldset>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">document.getElementById("id_search").focus();</script>
+{% endblock %}
