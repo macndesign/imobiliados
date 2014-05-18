@@ -1,4 +1,4 @@
-# -*- coding: utf:8 -*-
+# coding: utf:8
 from models import Bairro, Cidade, Uf
 from django.contrib import admin
 from django.contrib.admin.options import ModelAdmin, TabularInline
