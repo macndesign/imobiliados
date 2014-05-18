@@ -1,9 +1,4 @@
 # coding=utf-8
-'''
-Created on 16/07/2012
-
-@author: ajrs
-'''
 # API JSON para qualquer objeto
 from django.http import HttpResponse
 import json

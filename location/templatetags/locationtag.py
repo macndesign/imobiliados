@@ -1,9 +1,4 @@
-# -*- coding: utf:8 -*-
-'''
-Created on 16/07/2012
-
-@author: ajrs
-'''
+# coding: utf:8
 from django import template
 from django.conf import settings
 
