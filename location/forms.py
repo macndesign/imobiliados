@@ -1,5 +1,6 @@
-# coding=utf-8
-from models import Uf, Cidade, Bairro
+# coding: utf-8
+from __future__ import unicode_literals, absolute_import
+from .models import Uf, Cidade, Bairro
 from django import forms
 
 

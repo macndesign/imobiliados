@@ -1,17 +1,19 @@
-# coding=utf-8
-from location import settings
-from forms import Endereco, endereco_por_nome
-from models import Bairro, Uf, Cidade
+# coding: utf-8
+from __future__ import unicode_literals, absolute_import
+import json
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect
-import json
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.views.generic.edit import FormView
-from forms import GMapsForm
+from .forms import GMapsForm
+from .forms import Endereco, endereco_por_nome
+from .models import Bairro, Uf, Cidade
 
 
-def set(request, redirect_to=settings.LOCATION_SUCCESS_REDIRECT_TO):
+def set(request, redirect_to='core:home'):
     if ('uf' in request.POST) and ('cidade' in request.POST) and ('bairro' in request.POST):
         uf = request.POST['uf']
         cidade = request.POST['cidade']
@@ -36,7 +38,7 @@ def set(request, redirect_to=settings.LOCATION_SUCCESS_REDIRECT_TO):
     return redirect(reverse(redirect_to))
 
 
-def get(request, redirect_to=settings.LOCATION_SUCCESS_REDIRECT_TO):
+def get(request, redirect_to='core:home'):
     if not request.is_ajax():
         return HttpResponse('Não é possível acessar este recurso por este meio.', status=400)
 
@@ -52,7 +54,7 @@ def clear(request):
     if 'endereco' in request.session:
         del request.session['endereco']
 
-    return redirect(reverse(settings.LOCATION_SUCCESS_REDIRECT_TO))
+    return redirect(reverse('core:home'))
 
 
 class GMapsTemplateView(FormView):
@@ -61,6 +63,10 @@ class GMapsTemplateView(FormView):
 
     def get_success_url(self):
         return reverse('location:cadastrar-endereco')
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(GMapsTemplateView, self).dispatch(*args, **kwargs)
 
     def form_valid(self, form):
         # Salvar a UF

@@ -1,8 +1,9 @@
 # coding: utf-8
-from mixin import HybridDetailView
-from models import Uf, Cidade, Bairro
+from __future__ import unicode_literals, absolute_import
+from .mixin import HybridDetailView
+from .models import Uf, Cidade, Bairro
 from django.conf.urls import patterns, url
-from views import GMapsTemplateView
+from .views import GMapsTemplateView
 
 urlpatterns = patterns('location.views',
     url(r'^set/', 'set', name='set'),

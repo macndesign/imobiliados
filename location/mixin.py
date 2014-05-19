@@ -1,5 +1,6 @@
-# coding=utf-8
+# coding: utf-8
 # API JSON para qualquer objeto
+from __future__ import unicode_literals, absolute_import
 from django.http import HttpResponse
 import json
 from django.views.generic.detail import SingleObjectTemplateResponseMixin, BaseDetailView
