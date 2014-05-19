@@ -19,6 +19,7 @@ class Imovel(TimeStampedModel):
     bairro = models.ForeignKey(Bairro)
     endereco = models.CharField(max_length=255, verbose_name='Endereço')
     numero = models.CharField(max_length=30, verbose_name='Número', blank=True)
+    incorporar_mapa = models.TextField(blank=True)
 
     descricao = models.TextField()
     destaque = models.BooleanField()
@@ -29,8 +30,10 @@ class Imovel(TimeStampedModel):
     data_saida = models.DateTimeField(blank=True, null=True)
 
     def codigo_imovel(self):
-        # TODO: Fazer método para gerar o código do imóvel
-        pass
+        """
+        Código do imóvel. Ex.: MOB0001, MOB0123
+        """
+        return 'MOB{0:04d}'.format(self.pk)
 
     def __unicode__(self):
         return self.nome if self.nome else self.pk
@@ -51,3 +54,32 @@ class Imagem(models.Model):
 
     def __unicode__(self):
         return self.descricao
+
+
+class Texto(TimeStampedModel):
+    """
+    Qualquer texto do site como: Sobre, Condições de Locação, etc.
+    """
+    titulo = models.CharField(max_length=75)
+    descricao = models.TextField()
+
+    def __unicode__(self):
+        return self.titulo
+
+
+class Slider(TimeStampedModel):
+    titulo = models.CharField(max_length=75)
+    descricao = models.TextField(blank=True)
+    imagem = models.ImageField(upload_to='sliders')
+
+    def __unicode__(self):
+        return self.titulo
+
+
+class Parceiro(TimeStampedModel):
+    titulo = models.CharField(max_length=75)
+    descricao = models.TextField(blank=True)
+    imagem = models.ImageField(upload_to='parceiros')
+
+    def __unicode__(self):
+        return self.titulo
