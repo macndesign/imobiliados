@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'menu',
     'location',
     'modeltranslation',
+    'imagekit',
     'south',
 )
 
@@ -107,7 +108,26 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_URL = '/static/'
+# Heroku AWS vars
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('S3_BUCKET_NAME')
+AWS_QUERYSTRING_AUTH = False
 
+# Media
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_URL = config('MEDIA_URL')
+DEFAULT_FILE_STORAGE = config('DEFAULT_FILE_STORAGE')
+
+# Static
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = config('STATIC_URL')
+STATICFILES_STORAGE = config('STATICFILES_STORAGE')
+
+# Email
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_SUBJECT_PREFIX = '[Mobiliados]'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

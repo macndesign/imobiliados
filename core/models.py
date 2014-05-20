@@ -1,8 +1,10 @@
 # coding: utf-8
 from __future__ import unicode_literals, absolute_import
 from django.db import models
-from location.models import Uf, Cidade, Bairro
 from django.utils.translation import ugettext_lazy as _
+from location.models import Uf, Cidade, Bairro
+from imagekit.models import ImageSpecField
+from pilkit.processors import ResizeToFill
 
 
 class TimeStampedModel(models.Model):
@@ -60,6 +62,8 @@ class Imovel(TimeStampedModel):
 class Imagem(models.Model):
     descricao = models.CharField(_('Descrição'), max_length=75)
     imagem = models.ImageField(_('Imagem'), upload_to='images')
+    display = ImageSpecField(source='imagem', processors=[ResizeToFill(400, 300)], format='JPEG', options={'quality': 60})
+    thumb = ImageSpecField(source='imagem', processors=[ResizeToFill(100, 75)], format='JPEG', options={'quality': 60})
     imovel = models.ForeignKey(Imovel, verbose_name=_('Imóvel'))
 
     class Meta:
@@ -92,6 +96,8 @@ class ImagemRotativa(TimeStampedModel):
     titulo = models.CharField(_('Título'), max_length=75)
     descricao = models.TextField(_('Descrição'), blank=True)
     imagem = models.ImageField(_('Imagem'), upload_to='rotativas')
+    display = ImageSpecField(source='imagem', processors=[ResizeToFill(960, 370)], format='JPEG',
+                             options={'quality': 60})
 
     class Meta:
         verbose_name = _('Imagem rotativa')
@@ -105,6 +111,8 @@ class Parceiro(TimeStampedModel):
     titulo = models.CharField(_('Título'), max_length=75)
     descricao = models.TextField(_('Descrição'), blank=True)
     imagem = models.ImageField(_('Imagem'), upload_to='parceiros')
+    display = ImageSpecField(source='imagem', processors=[ResizeToFill(253, 77)], format='JPEG',
+                             options={'quality': 60})
 
     def __unicode__(self):
         return self.titulo
