@@ -3,3 +3,4 @@
 *.pyc
 locale/*
 .idea/*
+media/*
