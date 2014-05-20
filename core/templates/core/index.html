@@ -1,295 +1,95 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load i18n %}
+{% load staticfiles %}
 
 {% block content %}
 <div class="container">
     <div class="row">
         <div class="col-md-9">
+            {% if rotativas %}
             <div class="flexslider-principal flexslider">
                 <ul class="slides">
-                    <li><img src="{% static 'img/demo-slider/sl-beach-park.jpg' %}" /></li>
-                    <li><img src="{% static 'img/demo-slider/sl-teatro.jpg' %}" /></li>
-                    <li><img src="{% static 'img/demo-slider/sl-bexiga.jpg' %}" /></li>
-                    <li><img src="{% static 'img/demo-slider/sl-ponte.jpg' %}" /></li>
-                    <li><img src="{% static 'img/demo-slider/sl-catedral.jpg' %}" /></li>
+                    {% for imagem in rotativas %}
+                        <li>
+                            <img src="{{ imagem.display.url }}"
+                                    {% if imagem.titulo and imagem.descricao %}
+                                        title="{{ imagem.titulo }} | {{ imagem.descricao }}" alt="{{ imagem.titulo }} | {{ imagem.descricao }}"
+                                    {% elif parceiro.titulo %}
+                                        title="{{ imagem.titulo }}" alt="{{ imagem.titulo }}"
+                                    {% else %}
+                                        title="{% trans 'Sem título' %}" alt="{% trans 'Sem título' %}"
+                                    {% endif %}/>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
+            {% else %}
+                <div class="alert alert-warning">{% trans 'Sem imagem' %}</div>
+            {% endif %}
         </div>
 
         <div class="col-md-3 parceiros">
             <div class="row">
                 <div class="col-md-12 title">
-                    <strong>Parceiros</strong>
+                    <strong>{% trans 'Parceiros' %}</strong>
                 </div>
                 <div class="col-md-12">
-                    <a href="#" class="thumbnail">
-                        <img data-src="holder.js/100%x77" alt="...">
-                    </a>
-                </div>
-                <div class="col-md-12">
-                    <a href="#" class="thumbnail">
-                        <img data-src="holder.js/100%x77" alt="...">
-                    </a>
-                </div>
-                <div class="col-md-12">
-                    <a href="#" class="thumbnail">
-                        <img data-src="holder.js/100%x77" alt="...">
-                    </a>
+                    {% for imagem in parceiros %}
+                        <a href="{% if imagem.site %}{{ imagem.site }}{% else %}#{% endif %}" class="thumbnail" target="_blank">
+                            <img src="{{ imagem.display.url }}"
+                                    {% if imagem.titulo and imagem.descricao %}
+                                        title="{{ imagem.titulo }} | {{ imagem.descricao }}" alt="{{ imagem.titulo }} | {{ imagem.descricao }}"
+                                    {% elif parceiro.titulo %}
+                                        title="{{ imagem.titulo }}" alt="{{ imagem.titulo }}"
+                                    {% else %}
+                                        title="{% trans 'Sem título' %}" alt="{% trans 'Sem título' %}"
+                                    {% endif %}/>
+                        </a>
+                    {% empty %}
+                        <div class="alert alert-warning">{% trans 'Sem imagem' %}</div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
 
         <div class="col-md-12">
-            <h2>Imóveis em destaque</h2>
+            <h2>{% trans 'Imóveis em destaque' %}</h2>
         </div>
 
+        {% for imovel in imoveis %}
         <div class="col-md-3 destaque-desc">
             <div class="row">
                 <div class="col-md-12">
-                    <h5>Quarto/Sala <span class="label label-danger pull-right">#4321 Alugado</span></h5>
+                    <h5>{{ imovel.tipo_imovel }} <span class="label {% if imovel.alugado %}label-danger{% else %}label-default{% endif %} pull-right">
+                        #{{ imovel.codigo }} {% if imovel.alugado %}Alugado{% endif %}</span></h5>
                 </div>
                 <div class="col-md-12">
                     <div class="flexslider flexslider-destaque">
                         <ul class="slides">
-                            <li data-thumb="{% static 'img/demo-slider/im-1-1-t.jpg' %}">
-                                <a href="http://google.com"><img src="{% static 'img/demo-slider/im-1-1-d.jpg' %}"/></a>
+                            {% for imagem in imovel.imagem_set.all|slice:":4" %}
+                            <li data-thumb="{{ imagem.thumb.url }}">
+                                <a href="#"><img src="{{ imagem.display.url }}"/></a>
                             </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-2-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-2-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-3-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-3-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-4-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-4-d.jpg' %}"/>
-                            </li>
+                            {% empty %}
+                                {% trans 'Sem imagem' %}
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <strong>ED. SAN PIETRO</strong><br>
-                    R Carolina Sucupira,878 Ap-700<br>
-                    A partir de <span class="label destaque-preco">R$ 100</span> a diária
+                    {% if imovel.nome %}<strong>{{ imovel.nome|upper }}</strong><br>{% endif %}
+                    {{ imovel.endereco }}, {{ imovel.numero }}<br>
+                    {% if imovel.valor %}
+                        {% trans 'A partir de' %} <span class="label destaque-preco">
+                        R$ {{ imovel.valor }}</span>
+                        {% trans 'a diária' %}
+                    {% endif %}
                 </div>
             </div>
         </div><!-- end-box -->
-
-        <div class="col-md-3 destaque-desc">
-            <div class="row">
-                <div class="col-md-12">
-                    <h5>Convencional <span class="label label-default pull-right">#6547</span></h5>
-                </div>
-                <div class="col-md-12">
-                    <div class="flexslider flexslider-destaque">
-                        <ul class="slides">
-                            <li data-thumb="{% static 'img/demo-slider/im-1-2-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-2-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-1-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-1-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-4-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-4-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-3-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-3-d.jpg' %}"/>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <strong>ED. SAN PIETRO</strong><br>
-                    R Carolina Sucupira,878 Ap-700<br>
-                    A partir de <span class="label destaque-preco">R$ 150</span> a diária
-                </div>
-            </div>
-        </div><!-- end-box -->
-
-        <div class="col-md-3 destaque-desc">
-            <div class="row">
-                <div class="col-md-12">
-                    <h5>Comercial <span class="label label-danger pull-right">#4321 Alugado</span></h5>
-                </div>
-                <div class="col-md-12">
-                    <div class="flexslider flexslider-destaque">
-                        <ul class="slides">
-                            <li data-thumb="{% static 'img/demo-slider/im-1-3-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-3-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-4-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-4-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-1-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-1-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-2-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-2-d.jpg' %}"/>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <strong>ED. SAN PIETRO</strong><br>
-                    R Carolina Sucupira,878 Ap-700<br>
-                    A partir de <span class="label destaque-preco">R$ 70</span> a diária
-                </div>
-            </div>
-        </div><!-- end-box -->
-
-        <div class="col-md-3 destaque-desc">
-            <div class="row">
-                <div class="col-md-12">
-                    <h5>2 Quartos <span class="label label-default pull-right">#9876</span></h5>
-                </div>
-                <div class="col-md-12">
-                    <div class="flexslider flexslider-destaque">
-                        <ul class="slides">
-                            <li data-thumb="{% static 'img/demo-slider/im-1-4-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-4-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-2-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-2-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-3-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-3-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-1-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-1-d.jpg' %}"/>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <strong>ED. SAN PIETRO</strong><br>
-                    R Carolina Sucupira,878 Ap-700<br>
-                    A partir de <span class="label destaque-preco">R$ 80</span> a diária
-                </div>
-            </div>
-        </div><!-- end-box -->
-
-        <div class="col-md-3 destaque-desc">
-            <div class="row">
-                <div class="col-md-12">
-                    <h5>2 Quartos <span class="label label-default pull-right">#9876</span></h5>
-                </div>
-                <div class="col-md-12">
-                    <div class="flexslider flexslider-destaque">
-                        <ul class="slides">
-                            <li data-thumb="{% static 'img/demo-slider/im-1-4-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-4-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-2-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-2-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-3-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-3-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-1-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-1-d.jpg' %}"/>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <strong>ED. SAN PIETRO</strong><br>
-                    R Carolina Sucupira,878 Ap-700<br>
-                    A partir de <span class="label destaque-preco">R$ 80</span> a diária
-                </div>
-            </div>
-        </div><!-- end-box -->
-
-        <div class="col-md-3 destaque-desc">
-            <div class="row">
-                <div class="col-md-12">
-                    <h5>Comercial <span class="label label-danger pull-right">#4321 Alugado</span></h5>
-                </div>
-                <div class="col-md-12">
-                    <div class="flexslider flexslider-destaque">
-                        <ul class="slides">
-                            <li data-thumb="{% static 'img/demo-slider/im-1-3-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-3-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-4-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-4-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-1-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-1-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-2-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-2-d.jpg' %}"/>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <strong>ED. SAN PIETRO</strong><br>
-                    R Carolina Sucupira,878 Ap-700<br>
-                    A partir de <span class="label destaque-preco">R$ 70</span> a diária
-                </div>
-            </div>
-        </div><!-- end-box -->
-
-        <div class="col-md-3 destaque-desc">
-            <div class="row">
-                <div class="col-md-12">
-                    <h5>Convencional <span class="label label-default pull-right">#6547</span></h5>
-                </div>
-                <div class="col-md-12">
-                    <div class="flexslider flexslider-destaque">
-                        <ul class="slides">
-                            <li data-thumb="{% static 'img/demo-slider/im-1-2-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-2-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-1-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-1-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-4-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-4-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-3-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-3-d.jpg' %}"/>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <strong>ED. SAN PIETRO</strong><br>
-                    R Carolina Sucupira,878 Ap-700<br>
-                    A partir de <span class="label destaque-preco">R$ 150</span> a diária
-                </div>
-            </div>
-        </div><!-- end-box -->
-
-        <div class="col-md-3 destaque-desc">
-            <div class="row">
-                <div class="col-md-12">
-                    <h5>Quarto/Sala <span class="label label-danger pull-right">#4321 Alugado</span></h5>
-                </div>
-                <div class="col-md-12">
-                    <div class="flexslider flexslider-destaque">
-                        <ul class="slides">
-                            <li data-thumb="{% static 'img/demo-slider/im-1-1-t.jpg' %}">
-                                <a href="http://google.com"><img src="{% static 'img/demo-slider/im-1-1-d.jpg' %}"/></a>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-2-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-2-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-3-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-3-d.jpg' %}"/>
-                            </li>
-                            <li data-thumb="{% static 'img/demo-slider/im-1-4-t.jpg' %}">
-                                <img src="{% static 'img/demo-slider/im-1-4-d.jpg' %}"/>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <strong>ED. SAN PIETRO</strong><br>
-                    R Carolina Sucupira,878 Ap-700<br>
-                    A partir de <span class="label destaque-preco">R$ 100</span> a diária
-                </div>
-            </div>
-        </div><!-- end-box -->
+        {% empty %}
+            <div class="col-md-12"><div class="alert alert-warning">{% trans 'Sem destaques' %}</div></div>
+        {% endfor %}
 
     </div>
 </div>

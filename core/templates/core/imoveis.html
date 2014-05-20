@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-9">
+            <h2>{% trans 'Imóveis' %}</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <iframe src="https://mapsengine.google.com/map/u/0/embed?mid=zRGxC3LRFSDM.kGWRe7CfhPVQ" width="100%" height="480"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 parceiros">
+            <div class="row">
+                <div class="col-md-12 title">
+                    <strong>{% trans 'Parceiros' %}</strong>
+                </div>
+                <div class="col-md-12">
+                    {% for imagem in parceiros %}
+                        <a href="{% if imagem.site %}{{ imagem.site }}{% else %}#{% endif %}" class="thumbnail" target="_blank">
+                            <img src="{{ imagem.display.url }}"
+                                    {% if imagem.titulo and imagem.descricao %}
+                                        title="{{ imagem.titulo }} | {{ imagem.descricao }}" alt="{{ imagem.titulo }} | {{ imagem.descricao }}"
+                                    {% elif parceiro.titulo %}
+                                        title="{{ imagem.titulo }}" alt="{{ imagem.titulo }}"
+                                    {% else %}
+                                        title="{% trans 'Sem título' %}" alt="{% trans 'Sem título' %}"
+                                    {% endif %}/>
+                        </a>
+                    {% empty %}
+                        <div class="alert alert-warning">{% trans 'Sem imagem' %}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

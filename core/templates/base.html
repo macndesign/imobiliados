@@ -1,5 +1,5 @@
 {% load i18n %}
-{% load static %}
+{% load staticfiles %}
 {% get_language_info_list for LANGUAGES as languages %}
 
 <!doctype html>
@@ -10,21 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="content-language" content="pt-br" />
 
-    <meta name="description" content="boralanchar.com.br :: Peça seu lanche!" />
-    <meta http-equiv="copyright" content="boralanchar.com.br" />
+    <meta name="description" content="mobiliados.com.br :: Alugue seu imóvel hoje!" />
+    <meta http-equiv="copyright" content="mobiliados.com.br" />
 	<meta name="keywords" content="" />
-    <meta http-equiv="pragma" content="no-cache" />
-	<meta http-equiv="cache-control" content="no-cache, no-store" />
-	<meta http-equiv="expires" content="Mon, 06 Jan 2014 00:00:01 GMT" />
 
 	<meta name="robots" content="index, follow" />
 	<meta name="googlebot" content="index, follow">
 
     <title>Mobiliados</title>
-
-    <!-- Links -->
-    <link rel="index" title="boralanchar.com.br" href="http://www.boralanchar.com.br" />
-	<link rel="canonical" href="http://www.boralanchar.com.br" />
 
     <!-- shortcut icon -->
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon" />
@@ -89,17 +82,23 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-                    <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Imóveis</a></li>
-                    <li><a href="#">Condições de locação</a></li>
+                    <li id="site-home" class="active"><a href="{% url 'core:home' %}"><span class="glyphicon glyphicon-home" style="margin-right: 6px"></span> Home</a></li>
+                    <li id="site-imoveis"><a href="{% url 'core:imoveis' %}">{% trans 'Imóveis' %}</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Sobre' %} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            {% for texto in textos %}
+                            <li><a href="{% url 'core:texto' texto.slug %}">{{ texto.titulo }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contato <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Avaliar a Estadia</a></li>
-                            <li><a href="#">Fale Conosco</a></li>
+                            <li><a href="#">{% trans 'Avaliar a Estadia' %}</a></li>
+                            <li><a href="#">{% trans 'Fale Conosco' %}</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -145,11 +144,12 @@
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="{% static 'libs/flexslider/jquery.flexslider-min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/docs.min.js' %}"></script>
+<script src="{% static 'libs/flexslider/jquery.flexslider-min.js' %}"></script>
 <script src="{% static 'js/app.js' %}"></script>
 </body>
 </html>

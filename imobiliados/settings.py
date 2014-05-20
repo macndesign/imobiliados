@@ -105,6 +105,10 @@ USE_L10N = True
 USE_TZ = True
 
 
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+TEMPLATE_CONTEXT_PROCESSORS += ('core.context_processor.shared_context_processor',)
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 

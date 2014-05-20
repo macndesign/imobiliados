@@ -6,7 +6,7 @@ $(window).load(function () {
     $('.flexslider-principal').flexslider({
         animation: "slide",
         slideshowSpeed: 5000,
-        startAt: 3,
+        startAt: 0,
         slideshow: true
     });
     $('.flexslider-destaque').flexslider({
@@ -15,5 +15,4 @@ $(window).load(function () {
         randomize: false,
         slideshow: false
     });
-
 });

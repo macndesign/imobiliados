@@ -8,12 +8,14 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-                       url(r'^$', include('core.urls', namespace='core')),
                        url(r'^location/', include('location.urls', namespace='location')),
 
                        url(r'^admin/', include(admin.site.urls)),
                        url(r'^i18n/', include(i18n)),
 
                        url(r'^accounts/login/$', 'django.contrib.auth.views.login',
-                           {'template_name': 'admin/login.html'}, name='login')
-) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                           {'template_name': 'admin/login.html'}, name='login'),
+
+                       # Sempre o ultimo das urls
+                       url(r'^', include('core.urls', namespace='core')),
+                       ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

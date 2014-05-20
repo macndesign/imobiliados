@@ -11,8 +11,12 @@ class ImovelAdmin(admin.ModelAdmin):
     inlines = [ImagemInline]
 
 
+class TextoAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('titulo',)}
+
+
 admin.site.register(Imovel, ImovelAdmin)
 admin.site.register(TipoImovel)
-admin.site.register(Texto)
+admin.site.register(Texto, TextoAdmin)
 admin.site.register(ImagemRotativa)
 admin.site.register(Parceiro)

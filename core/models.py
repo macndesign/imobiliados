@@ -1,10 +1,12 @@
 # coding: utf-8
 from __future__ import unicode_literals, absolute_import
 from django.db import models
+from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
 from location.models import Uf, Cidade, Bairro
 from imagekit.models import ImageSpecField
 from pilkit.processors import ResizeToFill
+from .managers import AtivoManager, ImovelManager
 
 
 class TimeStampedModel(models.Model):
@@ -30,12 +32,17 @@ class Imovel(TimeStampedModel):
     nome = models.CharField(_('Nome'), max_length=75, blank=True)
     tipo_imovel = models.ForeignKey(TipoImovel, verbose_name=_('Tipo de imóvel'))
 
+    # Localidade
     uf = models.ForeignKey(Uf, verbose_name=_('UF'))
     cidade = models.ForeignKey(Cidade, verbose_name=_('Cidade'))
     bairro = models.ForeignKey(Bairro, verbose_name=_('Bairro'))
     endereco = models.CharField(_('Endereço'), max_length=255)
     numero = models.CharField(_('Número'), max_length=30, blank=True)
     incorporar_mapa = models.TextField(_('Incorporar o mapa'), blank=True)
+
+    # Latitude e Longitude
+    latitude = models.IntegerField(_('Latitude'), blank=True)
+    longitude = models.IntegerField(_('Longitude'), blank=True)
 
     descricao = models.TextField(_('Descrição'), blank=True)
     destaque = models.BooleanField(_('Destaque'))
@@ -45,15 +52,17 @@ class Imovel(TimeStampedModel):
     data_chegada = models.DateTimeField(_('Data de chegada'), blank=True, null=True)
     data_saida = models.DateTimeField(_('Data de saída'), blank=True, null=True)
 
+    objects = ImovelManager()
+
     class Meta:
         verbose_name = _('Imóvel')
         verbose_name_plural = _('Imóveis')
 
-    def codigo_imovel(self):
+    def codigo(self):
         """
         Código do imóvel. Ex.: MOB0001, MOB0123
         """
-        return 'MOB{0:04d}'.format(self.pk)
+        return 'M{0:04d}'.format(self.pk)
 
     def __unicode__(self):
         return self.nome if self.nome else self.pk
@@ -79,11 +88,23 @@ class Texto(TimeStampedModel):
     Qualquer texto do site como: Sobre, Condições de Locação, etc.
     """
     titulo = models.CharField(_('Título'), max_length=75)
+    slug = models.SlugField(blank=True)
     descricao = models.TextField(_('Descrição'))
+    ativo = models.BooleanField(_('Ativo'), default=True)
+
+    objects = AtivoManager()
 
     class Meta:
         verbose_name = _('Texto')
         verbose_name_plural = _('Textos')
+
+    @models.permalink
+    def get_absolute_url(self):
+        return 'core:texto', [self.slug]
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.titulo)
+        return super(Texto, self).save(*args, **kwargs)
 
     def __unicode__(self):
         return self.titulo
@@ -98,6 +119,9 @@ class ImagemRotativa(TimeStampedModel):
     imagem = models.ImageField(_('Imagem'), upload_to='rotativas')
     display = ImageSpecField(source='imagem', processors=[ResizeToFill(960, 370)], format='JPEG',
                              options={'quality': 60})
+    ativo = models.BooleanField(_('Ativo'), default=True)
+
+    objects = AtivoManager()
 
     class Meta:
         verbose_name = _('Imagem rotativa')
@@ -113,6 +137,10 @@ class Parceiro(TimeStampedModel):
     imagem = models.ImageField(_('Imagem'), upload_to='parceiros')
     display = ImageSpecField(source='imagem', processors=[ResizeToFill(253, 77)], format='JPEG',
                              options={'quality': 60})
+    site = models.URLField(_('Site'), blank=True)
+    ativo = models.BooleanField(_('Ativo'), default=True)
+
+    objects = AtivoManager()
 
     def __unicode__(self):
         return self.titulo
