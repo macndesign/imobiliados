@@ -7,22 +7,39 @@
     <div class="row">
 
         <div class="col-md-9">
-            <h2>{% trans 'Imóveis' %}</h2>
+            <h2>
+                {% if imovel.nome %}<strong>{{ imovel.nome|upper }}</strong> - {% endif %}
+                {{ imovel.tipo_imovel }}
+            </h2>
+            <h3>
+                {% trans 'Cód:' %} <span class="label label-default">#{{ imovel.codigo }}</span>
+                <span class="label {% if imovel.alugado %}label-danger{% else %}label-success{% endif %}">
+                {% if imovel.alugado %}{% trans 'Alugado' %}{% else %}{% trans 'Livre' %}{% endif %}</span>
+            </h3>
             <div class="row">
-                <div class="col-md-12 imovel-maps">
-                    <iframe src="https://mapsengine.google.com/map/u/0/embed?mid=zRGxC3LRFSDM.kGWRe7CfhPVQ" width="100%" height="480"></iframe>
-                </div>
+                {% if imovel.incorporar_mapa %}
+                    <div class="col-md-12 imovel-maps">
+                        {{ imovel.incorporar_mapa|safe }}
+                    </div>
+                {% endif %}
                 <div class="col-md-12"><hr/></div>
-                {% for imovel in imoveis %}
-                <div class="col-md-3 destaque-desc">
+
+                <div class="col-md-7 destaque-desc">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="flexslider flexslider-destaque">
+                            <div id="flexslider-detalhe" class="flexslider">
                                 <ul class="slides">
-                                    {% for imagem in imovel.imagem_set.all|slice:":4" %}
-                                    <li data-thumb="{{ imagem.thumb.url }}">
-                                        <a href="#"><img src="{{ imagem.display.url }}"/></a>
-                                    </li>
+                                    {% for imagem in imovel.imagem_set.all %}
+                                        <li><img src="{{ imagem.display.url }}"/></li>
+                                    {% empty %}
+                                        {% trans 'Sem imagem' %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div id="flexslider-detalhe-thumb" class="flexslider">
+                                <ul class="slides">
+                                    {% for imagem in imovel.imagem_set.all %}
+                                        <li><img src="{{ imagem.thumb.url }}"/></li>
                                     {% empty %}
                                         {% trans 'Sem imagem' %}
                                     {% endfor %}
@@ -31,29 +48,25 @@
                         </div>
                     </div>
                 </div><!-- end-box -->
-                <div class="col-md-9">
+
+                <div class="col-md-5">
                     <div class="row">
                         <div class="col-md-12">
-                            <h4 id="imovel-{{ imovel.codigo }}">
-                                {% trans 'Cód:' %} <span class="label label-default">#{{ imovel.codigo }}</span>
-                                <span class="label {% if imovel.alugado %}label-danger{% else %}label-default{% endif %}">
-                                {% if imovel.alugado %}{% trans 'Alugado' %}{% else %}{% trans 'Livre' %}{% endif %}</span>
-                            </h4>
-                            <h3><a href="#">{{ imovel.tipo_imovel }}</a></h3>
-                            {% if imovel.nome %}<strong>{{ imovel.nome|upper }}</strong><br>{% endif %}
-                            <span style="font-size: .8em">{% trans 'Endereço:' %}</span><br/>
+                            <span style="font-size: .8em">{% trans 'Endereço' %}:</span><br/>
                             {{ imovel.endereco }}, N&ordm; {{ imovel.numero }}<br>
                             {% if imovel.valor %}
                                 {% trans 'A partir de' %} <span class="label destaque-preco">
                                 R$ {{ imovel.valor }}</span>
                                 {% trans 'a diária' %}
                             {% endif %}
+                            {% if imovel.descricao %}
+                                <hr/>
+                                <span style="font-size: .8em">{% trans 'Descrição' %}:</span><br/>
+                                {{ imovel.descricao }}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
-                {% empty %}
-                    <div class="col-md-12"><div class="alert alert-warning">{% trans 'Sem imóveis' %}</div></div>
-                {% endfor %}
             </div>
         </div>
 

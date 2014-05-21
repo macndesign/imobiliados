@@ -15,4 +15,22 @@ $(window).load(function () {
         randomize: false,
         slideshow: false
     });
+
+    // Detalhe
+    $('#flexslider-detalhe-thumb').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        itemWidth: 120,
+        itemMargin: 5,
+        asNavFor: '#flexslider-detalhe'
+    });
+    $('#flexslider-detalhe').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        sync: "#flexslider-detalhe-thumb"
+    });
 });

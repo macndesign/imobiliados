@@ -2,6 +2,17 @@
 {% load i18n %}
 {% load staticfiles %}
 
+{% block script %}
+<!-- Maps API Javascript -->
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<!-- Caixa de informação -->
+<script src="{% static 'js/infobox.js' %}"></script>
+<!-- Agrupamento dos marcadores -->
+<script src="{% static 'js/markerclusterer.js' %}"></script>
+<!-- Arquivo de inicialização do mapa -->
+<script src="{% static 'js/mapa.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <div class="row">
@@ -9,11 +20,11 @@
         <div class="col-md-9">
             <h2>{% trans 'Imóveis' %}</h2>
             <div class="row">
-                <div class="col-md-12 imovel-maps">
-                    <iframe src="https://mapsengine.google.com/map/u/0/embed?mid=zRGxC3LRFSDM.kGWRe7CfhPVQ" width="100%" height="480"></iframe>
-                </div>
-                <div class="col-md-12"><hr/></div>
-                {% for imovel in imoveis %}
+                <div class="col-md-12 imovel-maps" id="mapa"></div>
+            </div>
+            {% for imovel in imoveis %}
+            <div class="row"><hr/></div>
+            <div class="row {% cycle 'imovel-list' '' %}">
                 <div class="col-md-3 destaque-desc">
                     <div class="row">
                         <div class="col-md-12">
@@ -36,13 +47,14 @@
                         <div class="col-md-12">
                             <h4 id="imovel-{{ imovel.codigo }}">
                                 {% trans 'Cód:' %} <span class="label label-default">#{{ imovel.codigo }}</span>
-                                <span class="label {% if imovel.alugado %}label-danger{% else %}label-default{% endif %}">
+                                <span class="label {% if imovel.alugado %}label-danger{% else %}label-success{% endif %}">
                                 {% if imovel.alugado %}{% trans 'Alugado' %}{% else %}{% trans 'Livre' %}{% endif %}</span>
                             </h4>
                             <h3><a href="#">{{ imovel.tipo_imovel }}</a></h3>
                             {% if imovel.nome %}<strong>{{ imovel.nome|upper }}</strong><br>{% endif %}
                             <span class="imovel-label-endereco">{% trans 'Endereço:' %}</span><br/>
-                            {{ imovel.endereco }}, N&ordm; {{ imovel.numero }}<br>
+                            {{ imovel.endereco }}, N&ordm; {{ imovel.numero }}
+                            {% if imovel.complemento %} - {{ imovel.complemento }}{% endif %} - {{ imovel.cidade.descricao }} / {{ imovel.uf.abreviatura }}<br/>
                             {% if imovel.valor %}
                                 {% trans 'A partir de' %} <span class="label destaque-preco">
                                 R$ {{ imovel.valor }}</span>
@@ -51,10 +63,10 @@
                         </div>
                     </div>
                 </div>
-                {% empty %}
-                    <div class="col-md-12"><div class="alert alert-warning">{% trans 'Sem imóveis' %}</div></div>
-                {% endfor %}
             </div>
+            {% empty %}
+                <div class="col-md-12"><div class="alert alert-warning">{% trans 'Sem imóveis' %}</div></div>
+            {% endfor %}
         </div>
 
         <div class="col-md-3 parceiros">

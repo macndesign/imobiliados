@@ -14,9 +14,11 @@
 {% endblock %}
 
 {% block content %}
-	Object in template called without AJAX: {{ object }}<hr/>
+    <div class="container">
+    Object in template called without AJAX: {{ object }}<hr/>
 	<input type="button" onclick="send_request();" value="Request this page with AJAX" /><br/>
 	<b>PK via AJAX:</b><span id="idPk"></span><br/>
 	<b>Nome via AJAX:</b><span id="idNome"></span><br/>
 	<b>PK Uf via AJAX:</b><span id="idUfPk"></span><br/>
+    </div>
 {% endblock %}

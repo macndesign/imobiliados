@@ -38,15 +38,16 @@ class Imovel(TimeStampedModel):
     bairro = models.ForeignKey(Bairro, verbose_name=_('Bairro'))
     endereco = models.CharField(_('Endereço'), max_length=255)
     numero = models.CharField(_('Número'), max_length=30, blank=True)
+    complemento = models.CharField(_('Complemento'), max_length=75, blank=True)
     incorporar_mapa = models.TextField(_('Incorporar o mapa'), blank=True)
 
     # Latitude e Longitude
-    latitude = models.IntegerField(_('Latitude'), blank=True)
-    longitude = models.IntegerField(_('Longitude'), blank=True)
+    latitude = models.CharField(_('Latitude'), max_length=75, blank=True)
+    longitude = models.CharField(_('Longitude'), max_length=75, blank=True)
 
     descricao = models.TextField(_('Descrição'), blank=True)
     destaque = models.BooleanField(_('Destaque'))
-    valor = models.DecimalField(_('Valor'), blank=True, decimal_places=2, max_digits=16)
+    valor = models.DecimalField(_('Valor'), blank=True, default=0, decimal_places=2, max_digits=16)
     alugado = models.BooleanField(_('Alugado'))
     ativo = models.BooleanField(_('Ativo'))
     data_chegada = models.DateTimeField(_('Data de chegada'), blank=True, null=True)
@@ -63,6 +64,14 @@ class Imovel(TimeStampedModel):
         Código do imóvel. Ex.: MOB0001, MOB0123
         """
         return 'M{0:04d}'.format(self.pk)
+
+    def as_dict(self):
+        return {
+            'Id': self.pk,
+            'Latitude': self.latitude,
+            'Longitude': self.longitude,
+            'Descricao': self.descricao
+        }
 
     def __unicode__(self):
         return self.nome if self.nome else self.pk
