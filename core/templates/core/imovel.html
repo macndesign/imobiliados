@@ -41,7 +41,7 @@
                             </h4>
                             <h3><a href="#">{{ imovel.tipo_imovel }}</a></h3>
                             {% if imovel.nome %}<strong>{{ imovel.nome|upper }}</strong><br>{% endif %}
-                            <span class="imovel-label-endereco">{% trans 'Endereço:' %}</span><br/>
+                            <span style="font-size: .8em">{% trans 'Endereço:' %}</span><br/>
                             {{ imovel.endereco }}, N&ordm; {{ imovel.numero }}<br>
                             {% if imovel.valor %}
                                 {% trans 'A partir de' %} <span class="label destaque-preco">

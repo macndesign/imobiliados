@@ -24,4 +24,4 @@ class TextoDetailView(DetailView):
 class ImovelListView(ListView):
     queryset = Imovel.objects.ativos()
     template_name = 'core/imoveis.html'
-
+    context_object_name = 'imoveis'
