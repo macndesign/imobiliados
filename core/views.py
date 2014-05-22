@@ -60,9 +60,10 @@ class ContactFormView(FormView):
     form_class = ContactForm
     template_name = 'core/contato.html'
     type_message = 'Contact'
+    redirect_to = 'core:contato'
 
     def get_success_url(self):
-        return reverse_lazy('core:contato')
+        return reverse_lazy(self.redirect_to)
 
     def form_valid(self, form):
         """
@@ -103,7 +104,7 @@ class ContactFormView(FormView):
         except Exception:
             messages.add_message(self.request, messages.ERROR, _(u'Erro: Sua mensagem não pôde ser enviada.'))
 
-        return HttpResponseRedirect(reverse_lazy('core:contato'))
+        return HttpResponseRedirect(reverse_lazy(self.redirect_to))
 
     def form_invalid(self, form):
         messages.add_message(self.request, messages.ERROR,
@@ -114,8 +115,10 @@ class ContactFormView(FormView):
 class FaleConoscoFormView(ContactFormView):
     type_message = 'Fale conosco'
     template_name = 'core/fale-conosco.html'
+    redirect_to = 'core:fale-conosco'
 
 
 class AvaliarEstadiaFormView(ContactFormView):
     type_message = 'Avalie a estadia'
     template_name = 'core/avaliar-estadia.html'
+    redirect_to = 'core:avaliar-estadia'
