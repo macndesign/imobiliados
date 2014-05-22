@@ -89,11 +89,14 @@ class ContactFormView(FormView):
             }
         )
 
+        headers = {'Reply-To': email}
+
         msg = EmailMessage(
             subject='[{0}] {1} - {2}'.format(self.type_message, settings.EMAIL_SUBJECT_PREFIX, subject),
             body=mail,
             from_email=email,
             to=[settings.DEFAULT_FROM_EMAIL],
+            headers = headers
         )
 
         msg.content_subtype = 'html'
