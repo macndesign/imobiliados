@@ -115,6 +115,14 @@ h1, h2 {
     font-size: .8em
 }
 
+/* help text */
+.help-text {
+    font-size: .8em;
+    color: #777;
+    line-height: 1.8em;
+    text-indent: 2px;
+}
+
 /* Parceiros */
 .parceiros .title {
     margin-bottom: 14px;
@@ -179,10 +187,11 @@ h1, h2 {
 }
 
 /* Messages */
-.messages {
+.messages, .errorlist {
     list-style: none;
     padding-left: 0;
 }
+
 
 /* footer */
 .footer {

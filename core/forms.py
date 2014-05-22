@@ -17,8 +17,8 @@ phone_digits_re = re.compile(r'^(\d{2})[-\.]?(\d{4,5})[-\.]?(\d{4})$')
 
 class BRPhoneNumberField(Field):
     default_error_messages = {
-        'invalid': _(('Phone numbers must be in either of the following '
-                      'formats: XX-XXXX-XXXX or XX-XXXXX-XXXX.')),
+        'invalid': _('Os números de telefone deve estar em um dos seguintes '
+                     'formatos: 99-9999-9999 ou 99-99999-9999, pode ser escrito sem os hífens.'),
     }
 
     def clean(self, value):
@@ -43,7 +43,7 @@ class ContactForm(forms.Form):
         help_text=_('Seu nome para contato.'),
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            'placeholder': _('Seu nome para contato.')}
+            }
         )
     )
 
@@ -53,7 +53,7 @@ class ContactForm(forms.Form):
         help_text=_('Seu sobrenome para contato.'),
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            'placeholder': _('Seu sobrenome para contato.')}
+            }
         )
     )
 
@@ -63,7 +63,7 @@ class ContactForm(forms.Form):
         help_text=_('Seu email para contato. Ex: maria@email.com'),
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            'placeholder': _('Seu email para contato. Ex: maria@email.com')}
+            }
         )
     )
 
@@ -73,7 +73,7 @@ class ContactForm(forms.Form):
         help_text=_('Seu telefone para contato. Ex: 88-8888-8888'),
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            'placeholder': _('Seu telefone para contato. Ex: 88-8888-8888')}
+            }
         )
     )
 
@@ -83,7 +83,7 @@ class ContactForm(forms.Form):
         help_text=_('Título do email'),
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            'placeholder': _('Título do email.')}
+            }
         )
     )
 
@@ -93,6 +93,6 @@ class ContactForm(forms.Form):
         help_text=_('Escreva sua mensagem.'),
         widget=forms.Textarea(attrs={
             'class': 'form-control',
-            'placeholder': _('Escreva sua mensagem.')}
+            }
         )
     )

@@ -124,11 +124,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                &copy; {% trans 'Company' %} 2014
+                &copy; {% trans 'Mobiliados' %} 2014
             </div>
             <div class="col-md-6">
                 <form action="{% url 'set_language' %}" class="pull-right" method="post">
                     {% csrf_token %}
+                    {% trans 'Selecione a lígua' %}:
                     <input name="next" type="hidden" value="{{ redirect_to }}" />
                     <select name="language" onchange='this.form.submit()'>
                         {% for language in languages %}
@@ -138,6 +139,15 @@
                         {% endfor %}
                     </select>
                 </form>
+            </div>
+            <div class="col-md-12">
+                <hr/>
+                {% trans 'Av. Historiador Raimundo Girão, 444, Fortaleza - CE' %}<br/>
+                {% trans 'Contato: +55 85 8888 8888' %}
+                <span class="pull-right help-text">
+                    {% trans 'por' %}
+                    <a href="mailto:macndesign@gmail.com" target="_blank" class="label label-default">XSD - Mário Chaves</a>
+                </span>
             </div>
         </div>
     </div>

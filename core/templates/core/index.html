@@ -60,7 +60,7 @@
         <div class="col-md-3 destaque-desc">
             <div class="row">
                 <div class="col-md-12">
-                    <h5>{{ imovel.tipo_imovel }} <span class="label {% if imovel.alugado %}label-danger{% else %}label-default{% endif %} pull-right">
+                    <h5><a href="{% url 'core:imovel' imovel.pk %}">{{ imovel.tipo_imovel }}</a> <span class="label {% if imovel.alugado %}label-danger{% else %}label-default{% endif %} pull-right">
                         #{{ imovel.codigo }} {% if imovel.alugado %}Alugado{% endif %}</span></h5>
                 </div>
                 <div class="col-md-12">
@@ -68,7 +68,7 @@
                         <ul class="slides">
                             {% for imagem in imovel.imagem_set.all|slice:":4" %}
                             <li data-thumb="{{ imagem.thumb.url }}">
-                                <a href="#"><img src="{{ imagem.display.url }}"/></a>
+                                <a href="{% url 'core:imovel' imovel.pk %}"><img src="{{ imagem.display.url }}"/></a>
                             </li>
                             {% empty %}
                                 {% trans 'Sem imagem' %}
@@ -77,7 +77,7 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    {% if imovel.nome %}<strong>{{ imovel.nome|upper }}</strong><br>{% endif %}
+                    {% if imovel.nome %}<strong><a href="{% url 'core:imovel' imovel.pk %}">{{ imovel.nome|upper }}</a></strong><br>{% endif %}
                     {{ imovel.endereco }}, {{ imovel.numero }}
                     {% if imovel.complemento %} - {{ imovel.complemento }}{% endif %}<br/>
                     {{ imovel.cidade.descricao }} - {{ imovel.uf.abreviatura }}<br/>

@@ -118,3 +118,4 @@ class FaleConoscoFormView(ContactFormView):
 
 class AvaliarEstadiaFormView(ContactFormView):
     type_message = 'Avalie a estadia'
+    template_name = 'core/avaliar-estadia.html'

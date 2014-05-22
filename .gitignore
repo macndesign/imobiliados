@@ -1,6 +1,6 @@
 *.sqlite3
 *.ini
 *.pyc
-locale/*
+django.mo
 .idea/*
 media/*

@@ -62,7 +62,7 @@
                             {% if imovel.descricao %}
                                 <hr/>
                                 <span class="desc-menor">{% trans 'Descrição' %}:</span><br/>
-                                {{ imovel.descricao }}
+                                {{ imovel.descricao|safe }}
                             {% endif %}
                         </div>
                     </div>
