@@ -52,7 +52,7 @@
                 <div class="col-md-5">
                     <div class="row">
                         <div class="col-md-12">
-                            <span style="font-size: .8em">{% trans 'Endereço' %}:</span><br/>
+                            <span class="desc-menor">{% trans 'Endereço' %}:</span><br/>
                             {{ imovel.endereco }}, N&ordm; {{ imovel.numero }}<br>
                             {% if imovel.valor %}
                                 {% trans 'A partir de' %} <span class="label destaque-preco">
@@ -61,7 +61,7 @@
                             {% endif %}
                             {% if imovel.descricao %}
                                 <hr/>
-                                <span style="font-size: .8em">{% trans 'Descrição' %}:</span><br/>
+                                <span class="desc-menor">{% trans 'Descrição' %}:</span><br/>
                                 {{ imovel.descricao }}
                             {% endif %}
                         </div>

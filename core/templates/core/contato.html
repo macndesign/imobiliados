@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-9">
+            {% block titulo %}
+                <h2>{% trans 'Contato' %}</h2>
+            {% endblock %}
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %}
+                    class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %}"
+                   {% endif %}>{{ message|safe }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {{ form.non_field_errors }}
+
+            <form action="." method="POST" class="form-horizontal" role="form">{% csrf_token %}
+
+                {% for field in form %}
+                <div class="form-group {% if field.errors %}has-error{% endif %} has-feedback">
+                    <label class="control-label col-sm-3" for="{{ field.auto_id }}">{{ field.label }}</label>
+                    <div class="col-sm-9">
+                        {{ field }}
+                        <span class="glyphicon {% if field.errors %}glyphicon-remove{% endif %} form-control-feedback"></span>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <input type="submit" class="btn btn-success" value="Enviar" />
+                        <input type="button" class="btn btn-default" onclick="document.location='{% url 'core:home' %}'" value="Cancelar" />
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="col-md-3 parceiros">
+            <div class="row">
+                <div class="col-md-12 title">
+                    <strong>{% trans 'Parceiros' %}</strong>
+                </div>
+                <div class="col-md-12">
+                    {% for imagem in parceiros %}
+                        <a href="{% if imagem.site %}{{ imagem.site }}{% else %}#{% endif %}" class="thumbnail" target="_blank">
+                            <img src="{{ imagem.display.url }}"
+                                    {% if imagem.titulo and imagem.descricao %}
+                                        title="{{ imagem.titulo }} | {{ imagem.descricao }}" alt="{{ imagem.titulo }} | {{ imagem.descricao }}"
+                                    {% elif parceiro.titulo %}
+                                        title="{{ imagem.titulo }}" alt="{{ imagem.titulo }}"
+                                    {% else %}
+                                        title="{% trans 'Sem título' %}" alt="{% trans 'Sem título' %}"
+                                    {% endif %}/>
+                        </a>
+                    {% empty %}
+                        <div class="alert alert-warning">{% trans 'Sem imagem' %}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -25,6 +25,10 @@ h1, h2 {
     text-transform: uppercase;
 }
 
+.navbar-nav > li > a > .glyphicon {
+    margin-right: 6px;
+}
+
 /* Page top */
 .page-top {
     height: 113px;
@@ -82,7 +86,7 @@ h1, h2 {
     margin: 6px 7px;
 }
 
-/* FleSlider */
+/* FlexSlider */
 #flexslider-detalhe {
     margin-bottom: 1em;
 }
@@ -104,6 +108,11 @@ h1, h2 {
     font-weight: bold;
     color: #fcf8e3;
     background-color: #8a6d3b;
+}
+
+/* Desc */
+.desc-menor {
+    font-size: .8em
 }
 
 /* Parceiros */
@@ -167,6 +176,12 @@ h1, h2 {
     background: rgba(255,255,255,.4);
     border-right: 36px;
     padding-top: 12px;
+}
+
+/* Messages */
+.messages {
+    list-style: none;
+    padding-left: 0;
 }
 
 /* footer */

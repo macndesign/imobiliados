@@ -14,6 +14,7 @@ from __future__ import unicode_literals, absolute_import
 import os
 from decouple import config
 import dj_database_url
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
@@ -104,8 +105,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+
 TEMPLATE_CONTEXT_PROCESSORS += ('core.context_processor.shared_context_processor',)
 
 
@@ -129,9 +130,18 @@ STATIC_URL = config('STATIC_URL')
 STATICFILES_STORAGE = config('STATICFILES_STORAGE')
 
 # Email
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+# DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+# EMAIL_HOST = config('EMAIL_HOST')
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_SUBJECT_PREFIX = '[Mobiliados]'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+EMAIL_HOST = 'smtp@gmail.com'
+EMAIL_HOST_USER = 'pagetrue@gmail.com'
+EMAIL_HOST_PASSWORD = 'metal666999'
+DEFAULT_FROM_EMAIL = 'macndesign@gmail.com'
+
+# var for 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = config('EMAIL_BACKEND')

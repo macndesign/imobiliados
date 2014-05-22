@@ -1,0 +1,9 @@
+{% extends 'core/contato.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block titulo %}
+        <h2>{% trans 'Fale conosco' %}</h2>
+    {% endblock %}
+{% block content %}
+    {{ block.super }}
+{% endblock %}
