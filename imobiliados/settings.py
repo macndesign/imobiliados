@@ -130,18 +130,13 @@ STATIC_URL = config('STATIC_URL')
 STATICFILES_STORAGE = config('STATICFILES_STORAGE')
 
 # Email
-# DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
-# EMAIL_HOST = config('EMAIL_HOST')
-# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_SUBJECT_PREFIX = '[Mobiliados]'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-
-EMAIL_HOST = 'smtp@gmail.com'
-EMAIL_HOST_USER = 'pagetrue@gmail.com'
-EMAIL_HOST_PASSWORD = 'metal666999'
-DEFAULT_FROM_EMAIL = 'macndesign@gmail.com'
 
 # var for 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_BACKEND = config('EMAIL_BACKEND')
