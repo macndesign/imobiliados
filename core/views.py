@@ -96,7 +96,7 @@ class ContactFormView(FormView):
             body=mail,
             from_email=email,
             to=[settings.DEFAULT_FROM_EMAIL],
-            headers = headers
+            headers=headers,
         )
 
         msg.content_subtype = 'html'
