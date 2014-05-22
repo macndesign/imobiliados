@@ -84,6 +84,7 @@
                 <ul class="nav navbar-nav">
                     <li id="site-home" class="active"><a href="{% url 'core:home' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                     <li id="site-imoveis"><a href="{% url 'core:imoveis' %}">{% trans 'Imóveis' %}</a></li>
+                    {% if textos %}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Sobre' %} <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -92,6 +93,7 @@
                             {% endfor %}
                         </ul>
                     </li>
+                    {% endif %}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
