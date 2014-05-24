@@ -44,7 +44,7 @@ class ContactForm(forms.Form):
         help_text=_('Seu nome para contato.'),
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            }
+        }
         )
     )
 
@@ -55,7 +55,7 @@ class ContactForm(forms.Form):
         help_text=_('Seu sobrenome para contato.'),
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            }
+        }
         )
     )
 
@@ -66,18 +66,17 @@ class ContactForm(forms.Form):
         help_text=_('Seu email para contato. Ex: maria@email.com'),
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            }
+        }
         )
     )
 
     # Telefone para contato
     phone = BRPhoneNumberField(
         label=_('Telefone'),
-        max_length=25,
         help_text=_('Seu telefone para contato. Ex: 88-8888-8888'),
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            }
+        }
         )
     )
 
@@ -88,7 +87,7 @@ class ContactForm(forms.Form):
         help_text=_('Título do email'),
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            }
+        }
         )
     )
 
@@ -99,6 +98,6 @@ class ContactForm(forms.Form):
         help_text=_('Escreva sua mensagem.'),
         widget=forms.Textarea(attrs={
             'class': 'form-control',
-            }
+        }
         )
     )
