@@ -40,6 +40,7 @@ class ContactForm(forms.Form):
     # Nome do destinatário
     name = forms.CharField(
         label=_('Nome'),
+        max_length=15,
         help_text=_('Seu nome para contato.'),
         widget=forms.TextInput(attrs={
             'class': 'form-control',
@@ -50,6 +51,7 @@ class ContactForm(forms.Form):
     # Sobrenome do destinatário
     surname = forms.CharField(
         label=_('Sobrenome'),
+        max_length=30,
         help_text=_('Seu sobrenome para contato.'),
         widget=forms.TextInput(attrs={
             'class': 'form-control',
@@ -60,6 +62,7 @@ class ContactForm(forms.Form):
     # Email para contato
     email = forms.EmailField(
         label=_('Email'),
+        max_length=75,
         help_text=_('Seu email para contato. Ex: maria@email.com'),
         widget=forms.TextInput(attrs={
             'class': 'form-control',
@@ -70,6 +73,7 @@ class ContactForm(forms.Form):
     # Telefone para contato
     phone = BRPhoneNumberField(
         label=_('Telefone'),
+        max_length=25,
         help_text=_('Seu telefone para contato. Ex: 88-8888-8888'),
         widget=forms.TextInput(attrs={
             'class': 'form-control',
@@ -80,6 +84,7 @@ class ContactForm(forms.Form):
     # Assunto referente ao setor
     subject = forms.CharField(
         label=_('Assunto'),
+        max_length=75,
         help_text=_('Título do email'),
         widget=forms.TextInput(attrs={
             'class': 'form-control',
@@ -90,6 +95,7 @@ class ContactForm(forms.Form):
     # Redigir mensagem
     message = forms.CharField(
         label=_('Mensagem'),
+        max_length=255,
         help_text=_('Escreva sua mensagem.'),
         widget=forms.Textarea(attrs={
             'class': 'form-control',
