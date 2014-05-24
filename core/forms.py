@@ -94,7 +94,7 @@ class ContactForm(forms.Form):
     # Redigir mensagem
     message = forms.CharField(
         label=_('Mensagem'),
-        max_length=255,
+        max_length=1200,
         help_text=_('Escreva sua mensagem.'),
         widget=forms.Textarea(attrs={
             'class': 'form-control',
