@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'location',
     'modeltranslation',
     'imagekit',
+    'rosetta',
     'south',
 )
 

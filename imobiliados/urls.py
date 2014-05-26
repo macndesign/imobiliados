@@ -12,6 +12,7 @@ urlpatterns = patterns('',
 
                        url(r'^admin/', include(admin.site.urls)),
                        url(r'^i18n/', include(i18n)),
+                       url(r'^rosetta/', include('rosetta.urls')),
 
                        url(r'^accounts/login/$', 'django.contrib.auth.views.login',
                            {'template_name': 'admin/login.html'}, name='login'),
