@@ -141,3 +141,6 @@ EMAIL_USE_TLS = True
 
 # var for 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_BACKEND = config('EMAIL_BACKEND')
+
+# Rosetta
+ROSETTA_WSGI_AUTO_RELOAD = True
