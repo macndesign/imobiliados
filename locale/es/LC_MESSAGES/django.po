@@ -1,18 +1,19 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# Translators:
+# Mario Mario <macndesign@gmail.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Mobiliados para espanhol\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-27 04:16+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2014-05-27 18:15+0000\n"
+"PO-Revision-Date: 2014-05-27 18:08+0000\n"
+"Last-Translator: Mario Mario <macndesign@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mobiliados-para-"
+"espanhol/language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,19 +27,19 @@ msgstr ""
 
 #: core/forms.py:42 core/models.py:32
 msgid "Nome"
-msgstr ""
+msgstr "Nombre"
 
 #: core/forms.py:44
 msgid "Seu nome para contato."
-msgstr ""
+msgstr "Su nombre de contacto."
 
 #: core/forms.py:53
 msgid "Sobrenome"
-msgstr ""
+msgstr "Apellido"
 
 #: core/forms.py:55
 msgid "Seu sobrenome para contato."
-msgstr ""
+msgstr "Su apellido de contacto."
 
 #: core/forms.py:64
 msgid "Email"
@@ -299,7 +300,7 @@ msgstr ""
 
 #: core/templates/core/index.html:56
 msgid "Imóveis em destaque"
-msgstr "Inmuebles destacados"
+msgstr ""
 
 #: core/templates/core/index.html:93
 msgid "Sem destaques"
