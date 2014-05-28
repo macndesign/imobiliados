@@ -1,27 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+# Mario Mario <macndesign@gmail.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Mobiliados para portugues\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-05-27 18:15+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2014-05-27 18:30+0000\n"
+"Last-Translator: Mario Mario <macndesign@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/mobiliados-para-portugues/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: core/forms.py:20
 msgid ""
-"Os números de telefone deve estar em um dos seguintes formatos: 99-9999-9999 "
-"ou 99-99999-9999, pode ser escrito sem os hífens."
+"Os números de telefone deve estar em um dos seguintes formatos: 99-9999-9999"
+" ou 99-99999-9999, pode ser escrito sem os hífens."
 msgstr ""
 
 #: core/forms.py:42 core/models.py:32
@@ -34,7 +34,7 @@ msgstr ""
 
 #: core/forms.py:53
 msgid "Sobrenome"
-msgstr ""
+msgstr "Sobre nome"
 
 #: core/forms.py:55
 msgid "Seu sobrenome para contato."
