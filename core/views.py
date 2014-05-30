@@ -77,6 +77,7 @@ class ContactFormView(FormView):
         email = form.cleaned_data['email']
         phone = form.cleaned_data['phone']
         subject = form.cleaned_data['subject']
+        realty = form.cleaned_data['realty']
         message = form.cleaned_data['message']
         mail = render_to_string(
             'core/email.html', {
@@ -85,6 +86,7 @@ class ContactFormView(FormView):
                 'email': email,
                 'phone': phone,
                 'subject': subject,
+                'realty': realty,
                 'message': message,
             }
         )

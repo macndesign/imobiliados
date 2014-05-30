@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.forms.fields import Field
 from django.core.validators import EMPTY_VALUES
 from django.forms import ValidationError
+from .models import Imovel
 
 try:
     from django.utils.encoding import smart_text
@@ -32,8 +33,25 @@ class BRPhoneNumberField(Field):
         raise ValidationError(self.error_messages['invalid'])
 
 
+SUBJECT_CHOICES = (
+    ('Sugestão', _('Sugestão')),
+    ('Avaliação', _('Avaliação')),
+    ('Preços e disponibilidade', _('Preços e disponibilidade')),
+)
+
+
+def imoveis_choice():
+    imoveis = Imovel.objects.ativos()
+    outro = (('Outro', _('Outro')),)
+    imoveis_choice = outro
+    if imoveis:
+        imoveis_choice = tuple((imovel.nome, imovel.nome) for imovel in imoveis)
+        imoveis_choice += outro
+    return imoveis_choice
+
+
 class ContactForm(forms.Form):
-    u"""
+    """
     Formulário de contato do site.
     """
 
@@ -56,7 +74,8 @@ class ContactForm(forms.Form):
         widget=forms.TextInput(attrs={
             'class': 'form-control',
         }
-        )
+        ),
+        required=False
     )
 
     # Email para contato
@@ -81,11 +100,22 @@ class ContactForm(forms.Form):
     )
 
     # Assunto referente ao setor
-    subject = forms.CharField(
+    subject = forms.ChoiceField(
         label=_('Assunto'),
-        max_length=75,
-        help_text=_('Título do email'),
-        widget=forms.TextInput(attrs={
+        help_text=_('Assunto do email'),
+        choices=SUBJECT_CHOICES,
+        widget=forms.Select(attrs={
+            'class': 'form-control',
+        }
+        )
+    )
+
+    # Imóvel
+    realty = forms.ChoiceField(
+        label=_('Imóvel'),
+        help_text=_('Imóvel sobre o qual deseja informações'),
+        choices=imoveis_choice(),
+        widget=forms.Select(attrs={
             'class': 'form-control',
         }
         )

@@ -126,7 +126,7 @@ class ImagemRotativa(TimeStampedModel):
     titulo = models.CharField(_('Título'), max_length=75)
     descricao = models.TextField(_('Descrição'), blank=True)
     imagem = models.ImageField(_('Imagem'), upload_to='rotativas')
-    display = ImageSpecField(source='imagem', processors=[ResizeToFill(960, 370)], format='JPEG',
+    display = ImageSpecField(source='imagem', processors=[ResizeToFill(960, 338)], format='JPEG',
                              options={'quality': 60})
     ativo = models.BooleanField(_('Ativo'), default=True)
 

@@ -96,13 +96,7 @@
                     {% endif %}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-send"> Contato <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{% url 'core:avaliar-estadia' %}">{% trans 'Avaliar a Estadia' %}</a></li>
-                            <li><a href="{% url 'core:fale-conosco' %}">{% trans 'Fale Conosco' %}</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="{% url 'core:fale-conosco' %}"><span class="glyphicon glyphicon-send"></span> {% trans 'Fale conosco' %}</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -117,7 +111,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <hr/>
+            <br/>
         </div>
     </div>
 </div>

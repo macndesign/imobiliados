@@ -17,12 +17,6 @@
                 {% if imovel.alugado %}{% trans 'Alugado' %}{% else %}{% trans 'Livre' %}{% endif %}</span>
             </h3>
             <div class="row">
-                {% if imovel.incorporar_mapa %}
-                    <div class="col-md-12 imovel-maps">
-                        {{ imovel.incorporar_mapa|safe }}
-                    </div>
-                {% endif %}
-                <div class="col-md-12"><hr/></div>
 
                 <div class="col-md-7 destaque-desc">
                     <div class="row">
@@ -59,14 +53,20 @@
                                 R$ {{ imovel.valor }}</span>
                                 {% trans 'a diária' %}
                             {% endif %}
-                            {% if imovel.descricao %}
-                                <hr/>
+                            {% if imovel.descricao %}<br><br>
                                 <span class="desc-menor">{% trans 'Descrição' %}:</span><br/>
                                 {{ imovel.descricao|safe }}
                             {% endif %}
                         </div>
                     </div>
                 </div>
+
+                {% if imovel.incorporar_mapa %}
+                    <div class="col-md-12 imovel-maps">
+                        {{ imovel.incorporar_mapa|safe }}
+                    </div>
+                {% endif %}
+
             </div>
         </div>
 
