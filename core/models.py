@@ -47,7 +47,8 @@ class Imovel(TimeStampedModel):
 
     descricao = models.TextField(_('Descrição'), blank=True)
     destaque = models.BooleanField(_('Destaque'))
-    valor = models.DecimalField(_('Valor'), blank=True, default=0, decimal_places=2, max_digits=16)
+    valor = models.DecimalField(_('Valor da diária'), blank=True, default=0, decimal_places=2, max_digits=16)
+    valor_mensal = models.DecimalField(_('Valor mensal'), blank=True, default=0, decimal_places=2, max_digits=16)
     alugado = models.BooleanField(_('Alugado'))
     ativo = models.BooleanField(_('Ativo'))
     data_chegada = models.DateTimeField(_('Data de chegada'), blank=True, null=True)
