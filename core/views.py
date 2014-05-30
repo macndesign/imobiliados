@@ -12,7 +12,7 @@ from django.views.generic.list import ListView
 from django.conf import settings
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
-from .models import ImagemRotativa, Parceiro, Imovel, Texto
+from .models import ImagemRotativa, Parceiro, Imovel, Texto, TipoImovel
 from .forms import ContactForm
 
 
@@ -33,9 +33,17 @@ class TextoDetailView(DetailView):
 
 
 class ImovelListView(ListView):
-    queryset = Imovel.objects.ativos()
     template_name = 'core/imoveis.html'
     context_object_name = 'imoveis'
+
+    def get_queryset(self):
+        tipo_imovel = self.request.GET.get('tipo', None)
+        if tipo_imovel:
+            tipo_imovel_selecionado = TipoImovel.objects.get(pk=tipo_imovel)
+            imoveis = tipo_imovel_selecionado.imovel_set.all()
+        else:
+            imoveis = Imovel.objects.ativos()
+        return imoveis
 
 
 class ImovelDetailView(DetailView):

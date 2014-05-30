@@ -83,16 +83,26 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li id="site-home" class="active"><a href="{% url 'core:home' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                    <li id="site-imoveis"><a href="{% url 'core:imoveis' %}">{% trans 'Imóveis' %}</a></li>
+                    {% if tipo_imoveis %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Imóveis' %} <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'core:imoveis' %}">{% trans 'Todos' %}</a></li>
+                                {% for tipo_imovel in tipo_imoveis %}
+                                <li><a href="{% url 'core:imoveis' %}?tipo={{ tipo_imovel.pk }}">{{ tipo_imovel.titulo }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endif %}
                     {% if textos %}
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Sobre' %} <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            {% for texto in textos %}
-                            <li><a href="{% url 'core:texto' texto.slug %}">{{ texto.titulo }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Sobre' %} <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                {% for texto in textos %}
+                                <li><a href="{% url 'core:texto' texto.slug %}">{{ texto.titulo }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
                     {% endif %}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
