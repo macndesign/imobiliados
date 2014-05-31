@@ -45,6 +45,14 @@ class ImovelListView(ListView):
             imoveis = Imovel.objects.ativos()
         return imoveis
 
+    def get_context_data(self, **kwargs):
+        context = super(ImovelListView, self).get_context_data(**kwargs)
+        tipo_imovel = self.request.GET.get('tipo', None)
+        if tipo_imovel:
+            tipo_imovel_selecionado = TipoImovel.objects.get(pk=tipo_imovel)
+            context['tipo_imovel'] = tipo_imovel_selecionado
+        return context
+
 
 class ImovelDetailView(DetailView):
     model = Imovel

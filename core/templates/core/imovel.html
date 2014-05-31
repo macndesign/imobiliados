@@ -9,8 +9,8 @@
 
         <div class="col-md-9">
             <h2>
-                {% if imovel.nome %}<strong>{{ imovel.nome|upper }}</strong> - {% endif %}
-                {{ imovel.tipo_imovel }}
+                {% if imovel.nome %}{{ imovel.nome|upper }}{% endif %}
+                {% if imovel.tipo_imovel %}<small>&rsaquo; {{ imovel.tipo_imovel }}</small>{% endif %}
             </h2>
             <h3>
                 {% trans 'Cód:' %} <span class="label label-default">#{{ imovel.codigo }}</span>

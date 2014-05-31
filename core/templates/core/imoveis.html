@@ -20,7 +20,7 @@
     <div class="row">
 
         <div class="col-md-9">
-            <h2>{% trans 'Imóveis' %}</h2>
+            <h2>{% trans 'Imóveis' %} {% if tipo_imovel %}<small>&rsaquo; {{ tipo_imovel }}</small>{% endif %}</h2>
             {% for imovel in imoveis %}
             <div class="row">
                 <div class="col md-12 imovel-list">
@@ -50,8 +50,7 @@
                                         <span class="label {% if imovel.alugado %}label-danger{% else %}label-success{% endif %}">
                                         {% if imovel.alugado %}{% trans 'Alugado' %}{% else %}{% trans 'Livre' %}{% endif %}</span>
                                     </h4>
-                                    <h3><a href="{% url 'core:imovel' imovel.pk %}">{{ imovel.tipo_imovel }}</a></h3>
-                                    {% if imovel.nome %}<strong>{{ imovel.nome|upper }}</strong><br>{% endif %}
+                                    {% if imovel.nome %}<h3><a href="{% url 'core:imovel' imovel.pk %}">{{ imovel.nome|upper }}</a> <small>{{ imovel.tipo_imovel }}</small></h3>{% endif %}
                                     <span class="imovel-label-endereco">{% trans 'Endereço:' %}</span><br/>
                                     {{ imovel.endereco }}, N&ordm; {{ imovel.numero }}
                                     {% if imovel.complemento %} - {{ imovel.complemento }}{% endif %} - {{ imovel.cidade.descricao }} / {{ imovel.uf.abreviatura }}<br/>
