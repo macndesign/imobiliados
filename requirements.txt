@@ -8,6 +8,7 @@ dj-static==0.0.5
 django-appconf==0.6
 django-imagekit==3.2.1
 django-modeltranslation==0.7.3
+django-money==0.4.1
 django-rosetta==0.7.4
 django-storages==1.1.8
 django-toolbelt==0.0.1
@@ -15,6 +16,7 @@ gunicorn==18.0
 pilkit==1.1.8
 polib==1.0.4
 psycopg2==2.5.3
+py-moneyed==0.5.0
 pystache==0.5.4
 python-decouple==2.2
 requests==2.2.1

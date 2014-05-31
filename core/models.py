@@ -6,6 +6,8 @@ from django.utils.translation import ugettext_lazy as _
 from location.models import Uf, Cidade, Bairro
 from imagekit.models import ImageSpecField
 from pilkit.processors import ResizeToFill
+import moneyed
+from djmoney.models.fields import MoneyField
 from .managers import AtivoManager, ImovelManager
 
 
@@ -47,8 +49,10 @@ class Imovel(TimeStampedModel):
 
     descricao = models.TextField(_('Descrição'), blank=True)
     destaque = models.BooleanField(_('Destaque'))
-    valor = models.DecimalField(_('Valor da diária'), blank=True, default=0, decimal_places=2, max_digits=16)
-    valor_mensal = models.DecimalField(_('Valor mensal'), blank=True, default=0, decimal_places=2, max_digits=16)
+    valor = MoneyField(_('Valor da diária'), blank=True, default=0.00, decimal_places=2,
+                       max_digits=16, default_currency='BRL')
+    valor_mensal = MoneyField(_('Valor mensal'), blank=True, default=0.00, decimal_places=2,
+                              max_digits=16, default_currency='BRL')
     alugado = models.BooleanField(_('Alugado'))
     ativo = models.BooleanField(_('Ativo'))
     data_chegada = models.DateTimeField(_('Data de chegada'), blank=True, null=True)

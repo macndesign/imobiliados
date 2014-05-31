@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load l10n %}
+{% load djmoney %}
 {% load staticfiles %}
 
 {% block script %}
@@ -53,10 +55,17 @@
                                     <span class="imovel-label-endereco">{% trans 'Endereço:' %}</span><br/>
                                     {{ imovel.endereco }}, N&ordm; {{ imovel.numero }}
                                     {% if imovel.complemento %} - {{ imovel.complemento }}{% endif %} - {{ imovel.cidade.descricao }} / {{ imovel.uf.abreviatura }}<br/>
-                                    {% if imovel.valor %}
-                                        {% trans 'A partir de' %} <span class="label destaque-preco">
-                                        R$ {{ imovel.valor }}</span>
+                                    {% if imovel.valor.amount > 0 %}
+                                        <div class="diaria">
+                                        {% trans 'A partir de' %} <span class="label destaque-preco">{% money_localize imovel.valor %}</span>
                                         {% trans 'a diária' %}
+                                        </div>
+                                    {% endif %}
+                                    {% if imovel.valor_mensal.amount > 0 %}
+                                        <div class="mensal">
+                                        {% trans 'A partir de' %} <span class="label destaque-preco">{% money_localize imovel.valor_mensal %}</span>
+                                        {% trans 'mensal' %}
+                                        </div>
                                     {% endif %}
                                 </div>
                             </div>

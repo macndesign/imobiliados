@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-30 15:53+0000\n"
+"POT-Creation-Date: 2014-05-31 19:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,218 +36,230 @@ msgstr ""
 msgid "Preços e disponibilidade"
 msgstr ""
 
-#: core/forms.py:55 core/models.py:32
+#: core/forms.py:45
+msgid "Outro"
+msgstr ""
+
+#: core/forms.py:60 core/models.py:34
 msgid "Nome"
 msgstr ""
 
-#: core/forms.py:57
+#: core/forms.py:62
 msgid "Seu nome para contato."
 msgstr ""
 
-#: core/forms.py:66
+#: core/forms.py:71
 msgid "Sobrenome"
 msgstr ""
 
-#: core/forms.py:68
+#: core/forms.py:73
 msgid "Seu sobrenome para contato."
 msgstr ""
 
-#: core/forms.py:78
+#: core/forms.py:83
 msgid "Email"
 msgstr ""
 
-#: core/forms.py:80
+#: core/forms.py:85
 msgid "Seu email para contato. Ex: maria@email.com"
 msgstr ""
 
-#: core/forms.py:89
+#: core/forms.py:94
 msgid "Telefone"
 msgstr ""
 
-#: core/forms.py:90
+#: core/forms.py:95
 msgid "Seu telefone para contato. Ex: 88-8888-8888"
 msgstr ""
 
-#: core/forms.py:99
+#: core/forms.py:104
 msgid "Assunto"
 msgstr ""
 
-#: core/forms.py:100
+#: core/forms.py:105
 msgid "Assunto do email"
 msgstr ""
 
-#: core/forms.py:110 core/models.py:59 core/models.py:85
+#: core/forms.py:115 core/models.py:64 core/models.py:90
 msgid "Imóvel"
 msgstr ""
 
-#: core/forms.py:111
+#: core/forms.py:116
 msgid "Imóvel sobre o qual deseja informações"
 msgstr ""
 
-#: core/forms.py:121
+#: core/forms.py:126
 msgid "Mensagem"
 msgstr ""
 
-#: core/forms.py:123
+#: core/forms.py:128
 msgid "Escreva sua mensagem."
 msgstr ""
 
-#: core/models.py:13
+#: core/models.py:15
 msgid "Criado em"
 msgstr ""
 
-#: core/models.py:14
+#: core/models.py:16
 msgid "Modificado em"
 msgstr ""
 
-#: core/models.py:21 core/models.py:99 core/models.py:126 core/models.py:144
+#: core/models.py:23 core/models.py:104 core/models.py:131 core/models.py:149
 msgid "Título"
 msgstr ""
 
-#: core/models.py:24 core/models.py:33
+#: core/models.py:26 core/models.py:35
 msgid "Tipo de imóvel"
 msgstr ""
 
-#: core/models.py:25
+#: core/models.py:27
 msgid "Tipos de imóveis"
 msgstr ""
 
-#: core/models.py:36
+#: core/models.py:38
 msgid "UF"
 msgstr ""
 
-#: core/models.py:37
+#: core/models.py:39
 msgid "Cidade"
 msgstr ""
 
-#: core/models.py:38
+#: core/models.py:40
 msgid "Bairro"
 msgstr ""
 
-#: core/models.py:39 core/templates/core/imovel.html:49
+#: core/models.py:41 core/templates/core/imovel.html:50
 msgid "Endereço"
 msgstr ""
 
-#: core/models.py:40
+#: core/models.py:42
 msgid "Número"
 msgstr ""
 
-#: core/models.py:41
+#: core/models.py:43
 msgid "Complemento"
 msgstr ""
 
-#: core/models.py:42
+#: core/models.py:44
 msgid "Incorporar o mapa"
 msgstr ""
 
-#: core/models.py:45
+#: core/models.py:47
 msgid "Latitude"
 msgstr ""
 
-#: core/models.py:46
+#: core/models.py:48
 msgid "Longitude"
 msgstr ""
 
-#: core/models.py:48 core/models.py:81 core/models.py:101 core/models.py:127
-#: core/models.py:145 core/templates/core/imovel.html:57
+#: core/models.py:50 core/models.py:86 core/models.py:106 core/models.py:132
+#: core/models.py:150 core/templates/core/imovel.html:65
 msgid "Descrição"
 msgstr ""
 
-#: core/models.py:49
+#: core/models.py:51
 msgid "Destaque"
 msgstr ""
 
-#: core/models.py:50
-msgid "Valor"
-msgstr ""
-
-#: core/models.py:51 core/templates/core/imoveis.html:49
-#: core/templates/core/imovel.html:17
-msgid "Alugado"
-msgstr ""
-
-#: core/models.py:52 core/models.py:102 core/models.py:131 core/models.py:150
-msgid "Ativo"
-msgstr ""
-
-#: core/models.py:53
-msgid "Data de chegada"
+#: core/models.py:52
+msgid "Valor da diária"
 msgstr ""
 
 #: core/models.py:54
+msgid "Valor mensal"
+msgstr ""
+
+#: core/models.py:56 core/templates/core/imoveis.html:51
+#: core/templates/core/imovel.html:18
+msgid "Alugado"
+msgstr ""
+
+#: core/models.py:57 core/models.py:107 core/models.py:136 core/models.py:155
+msgid "Ativo"
+msgstr ""
+
+#: core/models.py:58
+msgid "Data de chegada"
+msgstr ""
+
+#: core/models.py:59
 msgid "Data de saída"
 msgstr ""
 
-#: core/models.py:60 core/templates/base.html:86
-#: core/templates/core/imoveis.html:21
+#: core/models.py:65 core/templates/base.html:88
+#: core/templates/core/imoveis.html:23
 msgid "Imóveis"
 msgstr ""
 
-#: core/models.py:82 core/models.py:88 core/models.py:128 core/models.py:146
+#: core/models.py:87 core/models.py:93 core/models.py:133 core/models.py:151
 msgid "Imagem"
 msgstr ""
 
-#: core/models.py:89
+#: core/models.py:94
 msgid "Imagens"
 msgstr ""
 
-#: core/models.py:107
+#: core/models.py:112
 msgid "Texto"
 msgstr ""
 
-#: core/models.py:108
+#: core/models.py:113
 msgid "Textos"
 msgstr ""
 
-#: core/models.py:136
+#: core/models.py:141
 msgid "Imagem rotativa"
 msgstr ""
 
-#: core/models.py:137
+#: core/models.py:142
 msgid "Imagens rotativas"
 msgstr ""
 
-#: core/models.py:149
+#: core/models.py:154
 msgid "Site"
 msgstr ""
 
-#: core/views.py:108
+#: core/views.py:116
 msgid "Mensagem enviada com sucesso."
 msgstr ""
 
-#: core/views.py:110
+#: core/views.py:118
 msgid "Erro: Sua mensagem não pôde ser enviada."
 msgstr ""
 
-#: core/views.py:116
+#: core/views.py:124
 msgid "O formulário está inválido. Faltam campos que são requeridos."
 msgstr ""
 
-#: core/templates/base.html:89
+#: core/templates/base.html:90
+msgid "Todos"
+msgstr ""
+
+#: core/templates/base.html:99
 msgid "Sobre"
 msgstr ""
 
-#: core/templates/base.html:99 core/templates/core/fale-conosco.html:5
+#: core/templates/base.html:109 core/templates/core/fale-conosco.html:5
 msgid "Fale conosco"
 msgstr ""
 
-#: core/templates/base.html:123
+#: core/templates/base.html:133
 msgid "Mobiliados"
 msgstr ""
 
-#: core/templates/base.html:128
+#: core/templates/base.html:138
 msgid "idioma"
 msgstr ""
 
-#: core/templates/base.html:141
+#: core/templates/base.html:151
 msgid "Av. Historiador Raimundo Girão, 444, Fortaleza - CE"
 msgstr ""
 
-#: core/templates/base.html:142
+#: core/templates/base.html:152
 msgid "Contato: +55 85 8888 8888"
 msgstr ""
 
-#: core/templates/base.html:144
+#: core/templates/base.html:154
 msgid "por"
 msgstr ""
 
@@ -259,49 +271,54 @@ msgstr ""
 msgid "Contato"
 msgstr ""
 
-#: core/templates/core/contato.html:61 core/templates/core/imoveis.html:79
-#: core/templates/core/imovel.html:76 core/templates/core/index.html:41
+#: core/templates/core/contato.html:61 core/templates/core/imoveis.html:88
+#: core/templates/core/imovel.html:84 core/templates/core/index.html:41
 #: core/templates/core/texto.html:17
 msgid "Parceiros"
 msgstr ""
 
-#: core/templates/core/contato.html:72 core/templates/core/imoveis.html:90
-#: core/templates/core/imovel.html:87 core/templates/core/index.html:25
+#: core/templates/core/contato.html:72 core/templates/core/imoveis.html:99
+#: core/templates/core/imovel.html:95 core/templates/core/index.html:25
 #: core/templates/core/index.html.py:52 core/templates/core/texto.html:28
 msgid "Sem título"
 msgstr ""
 
-#: core/templates/core/contato.html:76 core/templates/core/imoveis.html:36
-#: core/templates/core/imoveis.html:94 core/templates/core/imovel.html:29
-#: core/templates/core/imovel.html.py:38 core/templates/core/imovel.html:91
+#: core/templates/core/contato.html:76 core/templates/core/imoveis.html:38
+#: core/templates/core/imoveis.html:103 core/templates/core/imovel.html:30
+#: core/templates/core/imovel.html.py:39 core/templates/core/imovel.html:99
 #: core/templates/core/index.html:32 core/templates/core/index.html.py:56
 #: core/templates/core/index.html:81 core/templates/core/texto.html:32
 msgid "Sem imagem"
 msgstr ""
 
-#: core/templates/core/imoveis.html:47 core/templates/core/imovel.html:15
+#: core/templates/core/imoveis.html:49 core/templates/core/imovel.html:16
 msgid "Cód:"
 msgstr ""
 
-#: core/templates/core/imoveis.html:49 core/templates/core/imovel.html:17
+#: core/templates/core/imoveis.html:51 core/templates/core/imovel.html:18
 msgid "Livre"
 msgstr ""
 
-#: core/templates/core/imoveis.html:53
+#: core/templates/core/imoveis.html:55
 msgid "Endereço:"
 msgstr ""
 
-#: core/templates/core/imoveis.html:57 core/templates/core/imovel.html:52
+#: core/templates/core/imoveis.html:60 core/templates/core/imoveis.html:66
+#: core/templates/core/imovel.html:54 core/templates/core/imovel.html.py:60
 #: core/templates/core/index.html:92
 msgid "A partir de"
 msgstr ""
 
-#: core/templates/core/imoveis.html:59 core/templates/core/imovel.html:54
+#: core/templates/core/imoveis.html:61 core/templates/core/imovel.html:55
 #: core/templates/core/index.html:94
 msgid "a diária"
 msgstr ""
 
-#: core/templates/core/imoveis.html:69
+#: core/templates/core/imoveis.html:67 core/templates/core/imovel.html:61
+msgid "mensal"
+msgstr ""
+
+#: core/templates/core/imoveis.html:78
 msgid "Sem imóveis"
 msgstr ""
 
@@ -317,15 +334,15 @@ msgstr ""
 msgid "Sem destaques"
 msgstr ""
 
-#: imobiliados/settings.py:94
+#: imobiliados/settings.py:95
 msgid "Brazilian Portuguese"
 msgstr ""
 
-#: imobiliados/settings.py:95
+#: imobiliados/settings.py:96
 msgid "English"
 msgstr ""
 
-#: imobiliados/settings.py:96
+#: imobiliados/settings.py:97
 msgid "Spanish"
 msgstr ""
 

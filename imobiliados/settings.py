@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'location',
     'modeltranslation',
     'imagekit',
+    'djmoney',
     'rosetta',
     'south',
 )
@@ -99,12 +100,23 @@ LANGUAGES = (
 SOUTH_TESTS_MIGRATE = False
 
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
+USE_THOUSAND_SEPARATOR = True
+THOUSAND_SEPARATOR = '.'
+DECIMAL_SEPARATOR = ','
+
+from moneyed.localization import _FORMATTER
+from decimal import ROUND_HALF_EVEN
+
+_FORMATTER.add_formatting_definition(
+    "default",
+    group_size=3, group_separator=".", decimal_point=",",
+    positive_sign="", trailing_positive_sign="",
+    negative_sign="-", trailing_negative_sign="",
+    rounding_method=ROUND_HALF_EVEN
+)
 
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
