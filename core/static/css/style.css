@@ -206,7 +206,7 @@ h1, h2 {
     margin-top: 10px;
     min-height: 20px;
 }
-.infoBox p { padding: 15px }
+.infoBox p { padding: 0 15px }
 .infoBox:before {
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
