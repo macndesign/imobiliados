@@ -26,9 +26,11 @@ function abrirInfoBox(id, marker) {
 	idInfoBoxAberto = id;
 }
 
+var url_json = '/imoveis-json/';
+
 function carregarPontos() {
 	
-	$.getJSON('/imoveis-json/', function(pontos) {
+	$.getJSON(url_json, function(pontos) {
 		
 		var latlngbounds = new google.maps.LatLngBounds();
 		
@@ -66,5 +68,3 @@ function carregarPontos() {
 	});
 	
 }
-
-carregarPontos();

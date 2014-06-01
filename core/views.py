@@ -68,6 +68,15 @@ def imoveis_json(request):
     return HttpResponse(imoveis_json, content_type='application/json')
 
 
+def imoveis_por_tipo_json(request, pk):
+    tipo_imovel_selecionado = TipoImovel.objects.get(pk=pk)
+    imoveis = tipo_imovel_selecionado.imovel_set.all()
+    imoveis_json = json.dumps(
+        [imovel.as_dict() for imovel in imoveis if imovel.latitude and imovel.longitude]
+    )
+    return HttpResponse(imoveis_json, content_type='application/json')
+
+
 class ContactFormView(FormView):
     """
     Controller que valida, anexa arquivos e envia email de contato do site.

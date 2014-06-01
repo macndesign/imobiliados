@@ -13,6 +13,14 @@
 <script src="{% static 'js/markerclusterer.js' %}"></script>
 <!-- Arquivo de inicialização do mapa -->
 <script src="{% static 'js/mapa.js' %}"></script>
+<script>
+    {% if tipo_imovel %}
+        url_json = '/imoveis-por-tipo-json/{{ tipo_imovel.pk }}/';
+    {% else %}
+        url_json = '/imoveis-json/';
+    {% endif %}
+    carregarPontos();
+</script>
 {% endblock %}
 
 {% block content %}
