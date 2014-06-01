@@ -48,12 +48,12 @@
 
     <div class="row">
         <div class="col-md-12 page-top">
-            <img class="logo-mobiliados" src="{% static 'img/logo-mobiliados-v3.png' %}">
+            <a href="{% url 'core:home' %}"><img class="logo-mobiliados" src="{% static 'img/logo-mobiliados-v3.png' %}"></a>
             <span class="top-phone">
                 <span class="glyphicon glyphicon-earphone"></span>
-                +55 85 8793 6060<br/>
+                <a href="tel:558587936060">+55 85 8793 6060</a><br/>
                 <span class="glyphicon glyphicon-phone"></span>
-                +55 85 3267 4364
+                <a href="tel:558532674364">+55 85 3267 4364</a>
             </span>
             <div class="pull-right flags-container">
                 <form action="{% url 'set_language' %}" class="navbar-form navbar-left" method="post">

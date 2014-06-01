@@ -12,11 +12,6 @@
                 {% if imovel.nome %}{{ imovel.nome|upper }}{% endif %}
                 {% if imovel.tipo_imovel %}<small>&rsaquo; {{ imovel.tipo_imovel }}</small>{% endif %}
             </h2>
-            <h3>
-                {% trans 'Cód:' %} <span class="label label-default">#{{ imovel.codigo }}</span>
-                <span class="label {% if imovel.alugado %}label-danger{% else %}label-success{% endif %}">
-                {% if imovel.alugado %}{% trans 'Alugado' %}{% else %}{% trans 'Livre' %}{% endif %}</span>
-            </h3>
             <div class="row">
 
                 <div class="col-md-7 destaque-desc">
@@ -50,21 +45,28 @@
                             <span class="desc-menor">{% trans 'Endereço' %}:</span><br/>
                             {{ imovel.endereco }}, N&ordm; {{ imovel.numero }}<br>
                             {% if imovel.valor.amount > 0 %}
-                                <div class="diaria">
+                                <div class="diaria linha-preco">
                                 {% trans 'A partir de' %} <span class="label destaque-preco">{% money_localize imovel.valor %}</span>
                                 {% trans 'a diária' %}
                                 </div>
                             {% endif %}
                             {% if imovel.valor_mensal.amount > 0 %}
-                                <div class="mensal">
+                                <div class="mensal linha-preco">
                                 {% trans 'A partir de' %} <span class="label destaque-preco">{% money_localize imovel.valor_mensal %}</span>
                                 {% trans 'mensal' %}
                                 </div>
                             {% endif %}
-                            {% if imovel.descricao %}<br><br>
+                            {% if imovel.descricao %}<br>
                                 <span class="desc-menor">{% trans 'Descrição' %}:</span><br/>
                                 {{ imovel.descricao|safe }}
                             {% endif %}
+                        </div>
+                        <div class="col-md-12">
+                            <h3>
+                                <span class="label label-default"><small>{% trans 'Cód:' %}</small> #{{ imovel.codigo }}</span>
+                                <span class="label {% if imovel.alugado %}label-danger{% else %}label-success{% endif %}">
+                                {% if imovel.alugado %}{% trans 'Alugado' %}{% else %}{% trans 'Livre' %}{% endif %}</span>
+                            </h3>
                         </div>
                     </div>
                 </div>

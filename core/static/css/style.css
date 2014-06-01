@@ -12,6 +12,26 @@ h1, h2 {
     padding-bottom: .4em;
 }
 
+h2 small, h3 small {
+    color: #b1a575;
+}
+
+h3 > .label > small, h4 > .label > small {
+    color: #fff;
+}
+
+.label-default {
+    background-color: #c9bfa9;
+}
+
+/* Separate */
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #E6E2D0;
+}
+
 /* Links */
 a {
     color: #8a6d3b;
@@ -57,6 +77,15 @@ h1, h2 {
     background: -ms-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* IE10+ */
     background: linear-gradient(to bottom,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 ); /* IE6-9 */
+}
+
+.page-top .top-phone a {
+    color: #fff;
+}
+
+.page-top .top-phone a:hover {
+    color: #fcf8e3;
+    text-decoration: none;
 }
 
 /* Internalization */
@@ -106,9 +135,15 @@ h1, h2 {
 }
 
 .destaque-preco {
-    font-weight: bold;
     color: #fcf8e3;
     background-color: #8a6d3b;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 1.2em;
+}
+
+.linha-preco {
+    margin: 1em 0;
 }
 
 /* Desc */

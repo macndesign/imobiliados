@@ -14,6 +14,9 @@ from __future__ import unicode_literals, absolute_import
 import os
 from decouple import config
 import dj_database_url
+from moneyed import BRL
+from moneyed.localization import _FORMATTER
+from decimal import ROUND_HALF_EVEN
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -103,13 +106,9 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
-USE_THOUSAND_SEPARATOR = True
-THOUSAND_SEPARATOR = '.'
-DECIMAL_SEPARATOR = ','
 
-from moneyed.localization import _FORMATTER
-from decimal import ROUND_HALF_EVEN
-
+# Lib. Py-Moneyed
+_FORMATTER.add_sign_definition('default', BRL, prefix='R$ ')
 _FORMATTER.add_formatting_definition(
     "default",
     group_size=3, group_separator=".", decimal_point=",",

@@ -46,22 +46,21 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <h4 id="imovel-{{ imovel.codigo }}">
-                                        {% trans 'Cód:' %} <span class="label label-default">#{{ imovel.codigo }}</span>
+                                        <span class="label label-default"><small>{% trans 'Cód:' %}</small> #{{ imovel.codigo }}</span>
                                         <span class="label {% if imovel.alugado %}label-danger{% else %}label-success{% endif %}">
                                         {% if imovel.alugado %}{% trans 'Alugado' %}{% else %}{% trans 'Livre' %}{% endif %}</span>
                                     </h4>
-                                    {% if imovel.nome %}<h3><a href="{% url 'core:imovel' imovel.pk %}">{{ imovel.nome|upper }}</a> <small>{{ imovel.tipo_imovel }}</small></h3>{% endif %}
-                                    <span class="imovel-label-endereco">{% trans 'Endereço:' %}</span><br/>
+                                    {% if imovel.nome %}<h3><a href="{% url 'core:imovel' imovel.pk %}">{{ imovel.nome|upper }}</a> {% if not tipo_imovel %}<small>{{ imovel.tipo_imovel }}</small>{% endif %}</h3>{% endif %}
                                     {{ imovel.endereco }}, N&ordm; {{ imovel.numero }}
                                     {% if imovel.complemento %} - {{ imovel.complemento }}{% endif %} - {{ imovel.cidade.descricao }} / {{ imovel.uf.abreviatura }}<br/>
                                     {% if imovel.valor.amount > 0 %}
-                                        <div class="diaria">
+                                        <div class="diaria linha-preco">
                                         {% trans 'A partir de' %} <span class="label destaque-preco">{% money_localize imovel.valor %}</span>
                                         {% trans 'a diária' %}
                                         </div>
                                     {% endif %}
                                     {% if imovel.valor_mensal.amount > 0 %}
-                                        <div class="mensal">
+                                        <div class="mensal linha-preco">
                                         {% trans 'A partir de' %} <span class="label destaque-preco">{% money_localize imovel.valor_mensal %}</span>
                                         {% trans 'mensal' %}
                                         </div>
