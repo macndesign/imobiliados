@@ -9,6 +9,7 @@ from pilkit.processors import ResizeToFill
 import moneyed
 from djmoney.models.fields import MoneyField
 from .managers import AtivoManager, ImovelManager
+from ckeditor.fields import RichTextField
 
 
 class TimeStampedModel(models.Model):
@@ -47,7 +48,7 @@ class Imovel(TimeStampedModel):
     latitude = models.CharField(_('Latitude'), max_length=75, blank=True)
     longitude = models.CharField(_('Longitude'), max_length=75, blank=True)
 
-    descricao = models.TextField(_('Descrição'), blank=True)
+    descricao = RichTextField(_('Descrição'), blank=True, config_name='mobiliados_ckeditor')
     destaque = models.BooleanField(_('Destaque'))
     valor = MoneyField(_('Valor da diária'), blank=True, default=0.00, decimal_places=2,
                        max_digits=16, default_currency='BRL')
@@ -103,7 +104,7 @@ class Texto(TimeStampedModel):
     """
     titulo = models.CharField(_('Título'), max_length=75)
     slug = models.SlugField(blank=True)
-    descricao = models.TextField(_('Descrição'))
+    descricao = RichTextField(_('Descrição'), config_name='mobiliados_ckeditor')
     ativo = models.BooleanField(_('Ativo'), default=True)
 
     objects = AtivoManager()

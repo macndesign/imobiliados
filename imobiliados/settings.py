@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'modeltranslation',
     'imagekit',
     'djmoney',
+    'ckeditor',
     'rosetta',
     'south',
 )
@@ -155,3 +156,18 @@ EMAIL_BACKEND = config('EMAIL_BACKEND')
 
 # Rosetta
 ROSETTA_WSGI_AUTO_RELOAD = True
+
+# ckeditor
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_IMAGE_BACKEND = 'pillow'
+CKEDITOR_CONFIGS = {
+    'mobiliados_ckeditor': {
+        'toolbar_Full': [
+            ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+            ['Image', 'Flash', 'Table', 'HorizontalRule'],
+            ['TextColor', 'BGColor'],
+            ['Links', 'Link', 'Unlink', 'Anchor'],
+            ['Smiley', 'SpecialChar'], ['Source'],
+        ],
+    },
+}
