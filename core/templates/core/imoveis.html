@@ -53,11 +53,13 @@
                         <div class="col-md-9">
                             <div class="row">
                                 <div class="col-md-12">
+                                    {% comment %}
                                     <h4 id="imovel-{{ imovel.codigo }}">
                                         <span class="label label-default"><small>{% trans 'Cód:' %}</small> #{{ imovel.codigo }}</span>
                                         <span class="label {% if imovel.alugado %}label-danger{% else %}label-success{% endif %}">
                                         {% if imovel.alugado %}{% trans 'Alugado' %}{% else %}{% trans 'Livre' %}{% endif %}</span>
                                     </h4>
+                                    {% endcomment %}
                                     {% if imovel.nome %}<h3><a href="{% url 'core:imovel' imovel.pk %}">{{ imovel.nome|upper }}</a> {% if not tipo_imovel %}<small>{{ imovel.tipo_imovel }}</small>{% endif %}</h3>{% endif %}
                                     {{ imovel.endereco }}, N&ordm; {{ imovel.numero }}
                                     {% if imovel.complemento %} - {{ imovel.complemento }}{% endif %} - {{ imovel.cidade.descricao }} / {{ imovel.uf.abreviatura }}<br/>
@@ -89,27 +91,7 @@
         </div>
 
         <div class="col-md-3 parceiros">
-            <div class="row">
-                <div class="col-md-12 title">
-                    <strong>{% trans 'Parceiros' %}</strong>
-                </div>
-                <div class="col-md-12">
-                    {% for imagem in parceiros %}
-                        <a href="{% if imagem.site %}{{ imagem.site }}{% else %}#{% endif %}" class="thumbnail" target="_blank">
-                            <img src="{{ imagem.display.url }}"
-                                    {% if imagem.titulo and imagem.descricao %}
-                                        title="{{ imagem.titulo }} | {{ imagem.descricao }}" alt="{{ imagem.titulo }} | {{ imagem.descricao }}"
-                                    {% elif parceiro.titulo %}
-                                        title="{{ imagem.titulo }}" alt="{{ imagem.titulo }}"
-                                    {% else %}
-                                        title="{% trans 'Sem título' %}" alt="{% trans 'Sem título' %}"
-                                    {% endif %}/>
-                        </a>
-                    {% empty %}
-                        <div class="alert alert-warning">{% trans 'Sem imagem' %}</div>
-                    {% endfor %}
-                </div>
-            </div>
+            {% include 'core/parceiros_snip.html' %}
         </div>
 
     </div>
