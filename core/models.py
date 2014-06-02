@@ -91,6 +91,7 @@ class Imagem(models.Model):
     imovel = models.ForeignKey(Imovel, verbose_name=_('Imóvel'))
 
     class Meta:
+        ordering = ['descricao', 'imagem']
         verbose_name = _('Imagem')
         verbose_name_plural = _('Imagens')
 

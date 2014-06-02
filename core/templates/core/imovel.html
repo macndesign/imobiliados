@@ -20,7 +20,7 @@
                             <div id="flexslider-detalhe" class="flexslider">
                                 <ul class="slides">
                                     {% for imagem in imovel.imagem_set.all %}
-                                        <li><img src="{{ imagem.display.url }}"/></li>
+                                        <li><img src="{{ imagem.display.url }}" alt="{{ imagem.descricao }}" title="{{ imagem.descricao }}"/></li>
                                     {% empty %}
                                         {% trans 'Sem imagem' %}
                                     {% endfor %}
@@ -29,7 +29,7 @@
                             <div id="flexslider-detalhe-thumb" class="flexslider">
                                 <ul class="slides">
                                     {% for imagem in imovel.imagem_set.all %}
-                                        <li><img src="{{ imagem.thumb.url }}"/></li>
+                                        <li><img src="{{ imagem.thumb.url }}" alt="{{ imagem.descricao }}" title="{{ imagem.descricao }}"/></li>
                                     {% empty %}
                                         {% trans 'Sem imagem' %}
                                     {% endfor %}

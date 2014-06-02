@@ -61,7 +61,7 @@
                         <ul class="slides">
                             {% for imagem in imovel.imagem_set.all|slice:":4" %}
                             <li data-thumb="{{ imagem.thumb.url }}">
-                                <a href="{% url 'core:imovel' imovel.pk %}"><img src="{{ imagem.display.url }}"/></a>
+                                <a href="{% url 'core:imovel' imovel.pk %}"><img src="{{ imagem.display.url }}" alt="{{ imagem.descricao }}" title="{{ imagem.descricao }}"/></a>
                             </li>
                             {% empty %}
                                 {% trans 'Sem imagem' %}
