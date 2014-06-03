@@ -192,18 +192,18 @@
 }
 .navbar-inverse .navbar-brand,
 .navbar-inverse .navbar-nav > li > a {
-  color: #907968;
+  color: #eee3ca;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
 }
 .navbar-inverse .navbar-nav > li > a:hover {
   background-color: #332B25;
-  color: #D0AF96;
+  color: #fff;
 }
 .navbar-inverse .navbar-nav>.open>a,
 .navbar-inverse .navbar-nav>.open>a:hover,
 .navbar-inverse .navbar-nav>.open>a:focus {
   background-color: #332B25;
-  color: #D0AF96;
+  color: #fff;
 }
 .navbar-static-top,
 .navbar-fixed-top,

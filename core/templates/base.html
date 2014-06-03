@@ -10,14 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="content-language" content="pt-br" />
 
-    <meta name="description" content="mobiliados.com.br :: Alugue seu imóvel hoje!" />
+    <meta name="description" content="Aluguel de imóveis por temporada e salas e lojas comerciais direto com proprietário em Fortaleza" />
     <meta http-equiv="copyright" content="mobiliados.com.br" />
-	<meta name="keywords" content="" />
+	<meta name="keywords" content="temporada,aluguel,ferias,mobiliados,apartamento,kitinete,salas,lojas,flats,pousadas,hostel" />
 
 	<meta name="robots" content="index, follow" />
 	<meta name="googlebot" content="index, follow">
 
-    <title>Mobiliados</title>
+    <title>{% trans 'Mobiliados.com.br | Aluguel de imóveis por temporada e salas e lojas comerciais direto com proprietário em Fortaleza' %}</title>
 
     <!-- shortcut icon -->
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon" />
@@ -50,10 +50,10 @@
         <div class="col-md-12 page-top">
             <a href="{% url 'core:home' %}"><img class="logo-mobiliados" src="{% static 'img/logo-mobiliados-v3.png' %}"></a>
             <span class="top-phone">
-                <span class="glyphicon glyphicon-earphone"></span>
-                <a href="tel:8532674364">(85) 3267 4364</a><br/>
                 <span class="glyphicon glyphicon-phone"></span>
-                <a href="tel:8587936060">(85) 8793 6060</a>
+                <a href="tel:8587936060">+55 85 8793 6060 <small>Oi</small></a><br/>
+                <span class="glyphicon glyphicon-phone"></span>
+                <a href="tel:8598028080">+55 85 9802 8080 <small>TIM</small></a>
             </span>
             <div class="pull-right flags-container">
                 <form action="{% url 'set_language' %}" class="navbar-form navbar-left" method="post">
@@ -95,14 +95,9 @@
                         </li>
                     {% endif %}
                     {% if textos %}
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Sobre' %} <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                {% for texto in textos %}
-                                <li><a href="{% url 'core:texto' texto.slug %}">{{ texto.titulo }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </li>
+                        {% for texto in textos %}
+                        <li><a href="{% url 'core:texto' texto.slug %}">{{ texto.titulo }}</a></li>
+                        {% endfor %}
                     {% endif %}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -148,8 +143,25 @@
             </div>
             <div class="col-md-12">
                 <hr/>
-                {% trans 'Av. Historiador Raimundo Girão, 444, Fortaleza - CE' %}<br/>
-                {% trans 'Contato: +55 85 8888 8888' %}
+                {% trans 'Rua República do Líbano, 1080, Meireles, Fortaleza - CE' %}<br/><br/>
+                <table>
+                    <tr>
+                        <td>{% trans 'Contatos' %}:</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td><td>{% trans '+55 85 8793 6161' %}</td><td>&nbsp;<strong>{% trans 'Oi' %}</strong></td>
+                        <td>&nbsp;&nbsp;</td><td>{% trans '+55 85 8793 6060' %}</td><td>&nbsp;<strong>{% trans 'Oi' %}</strong></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td><td>{% trans '+55 85 9999 9999' %}</td><td>&nbsp;<strong>{% trans 'TIM' %}</strong></td>
+                        <td>&nbsp;&nbsp;</td><td>{% trans '+55 85 9802 8080' %}</td><td>&nbsp;<strong>{% trans 'TIM' %}</strong></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td><td colspan="2"><strong>{% trans 'Lícia Costa' %}</strong></td>
+                        <td>&nbsp;&nbsp;</td><td colspan="2"><strong>{% trans 'Denise Costa' %}</strong></td>
+                    </tr>
+                </table>
+                <br/>
                 <span class="pull-right help-text">
                     {% trans 'por' %}
                     <a href="mailto:macndesign@gmail.com" target="_blank" class="label label-default">XSD - Mário Chaves</a>

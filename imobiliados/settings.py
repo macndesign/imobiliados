@@ -98,7 +98,7 @@ gettext_noop = lambda s: s
 LANGUAGES = (
     ('pt-br', gettext_noop('Brazilian Portuguese')),
     ('en', gettext_noop('English')),
-    ('es', gettext_noop('Spanish')),
+    # ('es', gettext_noop('Spanish')),
 )
 
 SOUTH_TESTS_MIGRATE = False
