@@ -2,6 +2,14 @@
 {% load i18n %}
 {% load staticfiles %}
 
+{% block script %}
+    <script>
+        $(document).ready(function(){
+            $("#site-{{ object.slug }}").addClass("active");
+        });
+    </script>
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <div class="row">

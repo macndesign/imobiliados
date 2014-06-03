@@ -7,3 +7,10 @@
 {% block content %}
     {{ block.super }}
 {% endblock %}
+{% block script %}
+    <script>
+        $(document).ready(function(){
+            $("#site-fale-conosco").addClass("active");
+        });
+    </script>
+{% endblock %}

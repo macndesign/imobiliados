@@ -82,26 +82,26 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li id="site-home" class="active"><a href="{% url 'core:home' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                    <li id="site-home"><a href="{% url 'core:home' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                     {% if tipo_imoveis %}
-                        <li class="dropdown">
+                        <li id="site-imoveis" class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Imóveis' %} <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="{% url 'core:imoveis' %}">{% trans 'Todos' %}</a></li>
+                                <li id="site-tipo-imovel-todos"><a href="{% url 'core:imoveis' %}">{% trans 'Todos' %}</a></li>
                                 {% for tipo_imovel in tipo_imoveis %}
-                                <li><a href="{% url 'core:imoveis' %}?tipo={{ tipo_imovel.pk }}">{{ tipo_imovel.titulo }}</a></li>
+                                <li id="site-tipo-imovel-{{ tipo_imovel.pk }}"><a href="{% url 'core:imoveis' %}?tipo={{ tipo_imovel.pk }}">{{ tipo_imovel.titulo }}</a></li>
                                 {% endfor %}
                             </ul>
                         </li>
                     {% endif %}
                     {% if textos %}
                         {% for texto in textos %}
-                        <li><a href="{% url 'core:texto' texto.slug %}">{{ texto.titulo }}</a></li>
+                        <li id="site-{{ texto.slug }}"><a href="{% url 'core:texto' texto.slug %}">{{ texto.titulo }}</a></li>
                         {% endfor %}
                     {% endif %}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{% url 'core:fale-conosco' %}"><span class="glyphicon glyphicon-send"></span> {% trans 'Fale conosco' %}</a></li>
+                    <li id="site-fale-conosco"><a href="{% url 'core:fale-conosco' %}"><span class="glyphicon glyphicon-send"></span> {% trans 'Fale conosco' %}</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -179,6 +179,12 @@
 <script src="{% static 'js/docs.min.js' %}"></script>
 <script src="{% static 'libs/flexslider/jquery.flexslider-min.js' %}"></script>
 <script src="{% static 'js/app.js' %}"></script>
-{% block script %}{% endblock %}
+{% block script %}
+    <script>
+        $(document).ready(function(){
+            $("#site-home").addClass("active");
+        });
+    </script>
+{% endblock %}
 </body>
 </html>

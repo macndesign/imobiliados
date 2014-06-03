@@ -14,12 +14,23 @@
 <!-- Arquivo de inicialização do mapa -->
 <script src="{% static 'js/mapa.js' %}"></script>
 <script>
+
+    $(document).ready(function(){
+        $("#site-imoveis").addClass("active");
+        {% if tipo_imovel %}
+            $("#site-tipo-imovel-{{ tipo_imovel.pk }}").addClass("active");
+        {% else %}
+            $("#site-tipo-imovel-todos").addClass("active");
+        {% endif %}
+    });
+
     {% if tipo_imovel %}
         url_json = '/imoveis-por-tipo-json/{{ tipo_imovel.pk }}/';
     {% else %}
         url_json = '/imoveis-json/';
     {% endif %}
     carregarPontos();
+
 </script>
 {% endblock %}
 

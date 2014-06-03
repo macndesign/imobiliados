@@ -156,10 +156,10 @@
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
-  background-color: #357ebd;
-  background-image: -webkit-linear-gradient(top, #428bca 0%, #357ebd 100%);
-  background-image:         linear-gradient(to bottom, #428bca 0%, #357ebd 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff428bca', endColorstr='#ff357ebd', GradientType=0);
+  background-color: #689eb0;
+  background-image: -webkit-linear-gradient(top, #689eb0 0%, #82b7c9 100%);
+  background-image:         linear-gradient(to bottom, #689eb0 0%, #82b7c9 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#689eb0', endColorstr='#82b7c9', GradientType=0);
   background-repeat: repeat-x;
 }
 .navbar-default {
