@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-02 18:01+0000\n"
+"POT-Creation-Date: 2014-06-03 22:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,7 +104,7 @@ msgstr ""
 msgid "Modificado em"
 msgstr ""
 
-#: core/models.py:24 core/models.py:105 core/models.py:132 core/models.py:150
+#: core/models.py:24 core/models.py:106 core/models.py:133 core/models.py:151
 msgid "Título"
 msgstr ""
 
@@ -152,8 +152,8 @@ msgstr ""
 msgid "Longitude"
 msgstr ""
 
-#: core/models.py:51 core/models.py:87 core/models.py:107 core/models.py:133
-#: core/models.py:151 core/templates/core/imovel.html:60
+#: core/models.py:51 core/models.py:87 core/models.py:108 core/models.py:134
+#: core/models.py:152 core/templates/core/imovel.html:60
 msgid "Descrição"
 msgstr ""
 
@@ -173,7 +173,7 @@ msgstr ""
 msgid "Alugado"
 msgstr ""
 
-#: core/models.py:58 core/models.py:108 core/models.py:137 core/models.py:156
+#: core/models.py:58 core/models.py:109 core/models.py:138 core/models.py:157
 msgid "Ativo"
 msgstr ""
 
@@ -190,31 +190,31 @@ msgstr ""
 msgid "Imóveis"
 msgstr ""
 
-#: core/models.py:88 core/models.py:94 core/models.py:134 core/models.py:152
+#: core/models.py:88 core/models.py:95 core/models.py:135 core/models.py:153
 msgid "Imagem"
 msgstr ""
 
-#: core/models.py:95
+#: core/models.py:96
 msgid "Imagens"
 msgstr ""
 
-#: core/models.py:113
+#: core/models.py:114
 msgid "Texto"
 msgstr ""
 
-#: core/models.py:114
+#: core/models.py:115
 msgid "Textos"
 msgstr ""
 
-#: core/models.py:142
+#: core/models.py:143
 msgid "Imagem rotativa"
 msgstr ""
 
-#: core/models.py:143
+#: core/models.py:144
 msgid "Imagens rotativas"
 msgstr ""
 
-#: core/models.py:155
+#: core/models.py:156
 msgid "Site"
 msgstr ""
 
@@ -230,35 +230,69 @@ msgstr ""
 msgid "O formulário está inválido. Faltam campos que são requeridos."
 msgstr ""
 
+#: core/templates/base.html:20
+msgid ""
+"Mobiliados.com.br | Aluguel de imóveis por temporada e salas e lojas "
+"comerciais direto com proprietário em Fortaleza"
+msgstr ""
+
 #: core/templates/base.html:90
 msgid "Todos"
 msgstr ""
 
-#: core/templates/base.html:99
-msgid "Sobre"
-msgstr ""
-
-#: core/templates/base.html:109 core/templates/core/fale-conosco.html:5
+#: core/templates/base.html:104 core/templates/core/fale-conosco.html:5
 msgid "Fale conosco"
 msgstr ""
 
-#: core/templates/base.html:133
+#: core/templates/base.html:128
 msgid "Mobiliados"
 msgstr ""
 
-#: core/templates/base.html:138
+#: core/templates/base.html:133
 msgid "idioma"
 msgstr ""
 
-#: core/templates/base.html:151
-msgid "Av. Historiador Raimundo Girão, 444, Fortaleza - CE"
+#: core/templates/base.html:146
+msgid "Rua República do Líbano, 1080, Meireles, Fortaleza - CE"
+msgstr ""
+
+#: core/templates/base.html:149
+msgid "Contatos"
 msgstr ""
 
 #: core/templates/base.html:152
-msgid "Contato: +55 85 8888 8888"
+msgid "+55 85 8793 6161"
 msgstr ""
 
-#: core/templates/base.html:154
+#: core/templates/base.html:152 core/templates/base.html.py:153
+msgid "Oi"
+msgstr ""
+
+#: core/templates/base.html:153
+msgid "+55 85 8793 6060"
+msgstr ""
+
+#: core/templates/base.html:156
+msgid "+55 85 9999 9999"
+msgstr ""
+
+#: core/templates/base.html:156 core/templates/base.html.py:157
+msgid "TIM"
+msgstr ""
+
+#: core/templates/base.html:157
+msgid "+55 85 9802 8080"
+msgstr ""
+
+#: core/templates/base.html:160
+msgid "Lícia Costa"
+msgstr ""
+
+#: core/templates/base.html:161
+msgid "Denise Costa"
+msgstr ""
+
+#: core/templates/base.html:166
 msgid "por"
 msgstr ""
 
@@ -324,10 +358,6 @@ msgstr ""
 
 #: imobiliados/settings.py:100
 msgid "English"
-msgstr ""
-
-#: imobiliados/settings.py:101
-msgid "Spanish"
 msgstr ""
 
 #: location/templates/form_cadastrar_endereco.html:3
