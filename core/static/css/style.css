@@ -125,6 +125,20 @@ h1, h2 {
     margin-bottom: 12px;
 }
 
+#flexslider-detalhe-thumb .slides img {
+    opacity: .7;
+    cursor: pointer;
+}
+
+#flexslider-detalhe-thumb .slides img:hover {
+    opacity: 1;
+}
+
+#flexslider-detalhe-thumb .slides .flex-active-slide img {
+    opacity: 1;
+    cursor: default;
+}
+
 /* Destaque */
 .destaque-desc {
     color: #555;
