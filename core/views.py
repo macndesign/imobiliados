@@ -151,3 +151,42 @@ class FaleConoscoFormView(ContactFormView):
 # SEO
 class GoogleSiteVerificationView(TemplateView):
     template_name = 'seo/googledd36cd796f1a8b05.html'
+
+
+class RobotsTemplateView(TemplateView):
+    template_name = 'robots.txt'
+
+    def render_to_response(self, context, **response_kwargs):
+        return self.response_class(
+            request=self.request,
+            template=self.get_template_names(),
+            context=context,
+            mimetype='test/plain',
+            **response_kwargs
+        )
+
+
+class HumansTemplateView(TemplateView):
+    template_name = 'humans.txt'
+
+    def render_to_response(self, context, **response_kwargs):
+        return self.response_class(
+            request=self.request,
+            template=self.get_template_names(),
+            context=context,
+            mimetype='test/plain',
+            **response_kwargs
+        )
+
+
+class CrossDomainTemplateView(TemplateView):
+    template_name = 'crossdomain.xml'
+
+    def render_to_response(self, context, **response_kwargs):
+        return self.response_class(
+            request=self.request,
+            template=self.get_template_names(),
+            context=context,
+            mimetype='application/xml',
+            **response_kwargs
+        )

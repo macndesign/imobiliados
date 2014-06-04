@@ -1,0 +1,16 @@
+/* TEAM */
+	Leader: Mário Chaves
+	Contact: macndesign [at] gmail.com
+	Twitter: @macndesign
+	From: Fortaleza, Ceará, Brazil
+
+/* THANKS */
+	Base: Andrea Negreiros
+	Twitter: @andreanalmeida
+	From: Fortaleza, Ceará, Brazil
+
+/* SITE */
+	Last update: 2012/10/10
+	Language: Portuguese / English
+	Doctype: HTML5
+	IDE: PyCharm, Notepad++

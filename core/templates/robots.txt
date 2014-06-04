@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Sitemap: http://www.mobiliados.com.br/sitemap.xml
