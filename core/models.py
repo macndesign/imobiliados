@@ -1,5 +1,6 @@
 # coding: utf-8
 from __future__ import unicode_literals, absolute_import
+from django.core.urlresolvers import reverse_lazy
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
@@ -64,6 +65,10 @@ class Imovel(TimeStampedModel):
     class Meta:
         verbose_name = _('Imóvel')
         verbose_name_plural = _('Imóveis')
+
+    @models.permalink
+    def get_absolute_url(self):
+        return 'core:imovel', [self.id]
 
     def codigo(self):
         """

@@ -3,7 +3,7 @@ from __future__ import unicode_literals, absolute_import
 from django.conf.urls import patterns, url
 from location.mixin import HybridDetailView
 from .views import (HomeTemplateView, TextoDetailView, ImovelListView, ImovelDetailView, ContactFormView,
-                    FaleConoscoFormView, AvaliarEstadiaFormView, GoogleSiteVerificationView)
+                    FaleConoscoFormView, GoogleSiteVerificationView)
 from .models import Imovel
 
 urlpatterns = patterns('',
@@ -16,8 +16,6 @@ urlpatterns = patterns('',
                        url(r'^contato/$', ContactFormView.as_view(), name='contato'),
                        url(r'^fale-conosco/$', FaleConoscoFormView.as_view(), name='fale-conosco'),
                        url(r'^googledd36cd796f1a8b05.html$', GoogleSiteVerificationView.as_view(), name='google-site-verification'),
-
-                       url(r'^seo/$', AvaliarEstadiaFormView.as_view(), name='avaliar-estadia'),
 
                        # Sempre o ultimo das urls
                        url(r'^(?P<slug>[-\w]+)/$', TextoDetailView.as_view(), name='texto'),
