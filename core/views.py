@@ -152,3 +152,8 @@ class AvaliarEstadiaFormView(ContactFormView):
     type_message = 'Avalie a estadia'
     template_name = 'core/avaliar-estadia.html'
     redirect_to = 'core:avaliar-estadia'
+
+
+# SEO
+class GoogleSiteVerificationView(TemplateView):
+    template_name = 'seo/googledd36cd796f1a8b05.html'
