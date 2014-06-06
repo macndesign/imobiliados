@@ -1,6 +1,10 @@
 import os
-from fabric.api import local, run, lcd
+from fabric.api import local, run
 STATIC_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'core', 'static')
+
+
+def runserver():
+    local('./manage.py runserver 88.88.88.88:8000')
 
 
 def build_string_paths(static_dir, file_type):
@@ -44,7 +48,7 @@ def prepare_deploy():
 
 
 def push_heroku():
-    run('git push heroku master')
+    local('git push heroku master')
     run('heroku run python manage.py syncdb')
     run('heroku run python manage.py migrate')
 
