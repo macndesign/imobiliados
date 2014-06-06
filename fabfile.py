@@ -1,5 +1,5 @@
 import os
-from fabric.api import local
+from fabric.api import local, run, lcd
 STATIC_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'core', 'static')
 
 
@@ -25,3 +25,30 @@ def prepare_statics_to_deploy():
     concat_and_minify(os.path.join(STATIC_DIR, 'css/'), 'style.all.css', 'style.min.css', 'css')
     concat_and_minify(os.path.join(STATIC_DIR, 'libs', 'maps/'), 'app.all.js', 'app.min.js', 'js')
     concat_and_minify(os.path.join(STATIC_DIR, 'libs', 'flexslider/'), 'style.all.css', 'style.min.css', 'css')
+
+
+def test():
+    local('./manage.py test core')
+    local('./manage.py test location')
+
+
+def commit():
+    local('git add -p && git commit')
+
+
+def push():
+    local('git push')
+
+
+def prepare_deploy():
+    test()
+    prepare_statics_to_deploy()
+    commit()
+    push()
+
+
+def deploy():
+    prepare_deploy()
+    run('git push heroku master')
+    run('heroku run python manage.py syncdb')
+    run('heroku run python manage.py migrate')
