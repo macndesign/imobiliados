@@ -1,6 +1,5 @@
 # coding: utf-8
 from __future__ import unicode_literals, absolute_import
-from django.core.urlresolvers import reverse_lazy
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _

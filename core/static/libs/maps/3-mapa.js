@@ -1,3 +1,7 @@
+/*!
+ * Custom maps v3
+ */
+
 var map;
 var idInfoBoxAberto;
 var infoBox = [];

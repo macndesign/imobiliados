@@ -1,4 +1,6 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
+from __future__ import unicode_literals, absolute_import
+from django.conf import settings
 from .models import Texto, Parceiro, Imovel, TipoImovel
 
 
@@ -8,4 +10,4 @@ def shared_context_processor(request):
     imoveis = Imovel.objects.ativos()
     pk_tipo_imoveil_ativos = [imovel.tipo_imovel.pk for imovel in imoveis if imoveis.count()] or []
     tipo_imoveis = TipoImovel.objects.filter(pk__in=pk_tipo_imoveil_ativos)
-    return {'textos': textos, 'parceiros': parceiros, 'tipo_imoveis': tipo_imoveis}
+    return {'textos': textos, 'parceiros': parceiros, 'tipo_imoveis': tipo_imoveis, 'DEBUG': settings.DEBUG}

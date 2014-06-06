@@ -7,14 +7,17 @@
 {% block script %}
 <!-- Maps API Javascript -->
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-<!-- Caixa de informação -->
-<script src="{% static 'js/infobox.js' %}"></script>
-<!-- Agrupamento dos marcadores -->
-<script src="{% static 'js/markerclusterer.js' %}"></script>
-<!-- Arquivo de inicialização do mapa -->
-<script src="{% static 'js/mapa.js' %}"></script>
+{% if DEBUG %}
+    <!-- Caixa de informação -->
+    <script src="{% static 'libs/maps/1-infobox.js' %}"></script>
+    <!-- Agrupamento dos marcadores -->
+    <script src="{% static 'libs/maps/2-markerclusterer.js' %}"></script>
+    <!-- Arquivo de inicialização do mapa -->
+    <script src="{% static 'libs/maps/3-mapa.js' %}"></script>
+{% else %}
+    <script src="{% static 'libs/maps/app.min.js' %}"></script>
+{% endif %}
 <script>
-
     $(document).ready(function(){
         $("#site-imoveis").addClass("active");
         {% if tipo_imovel %}
@@ -23,14 +26,12 @@
             $("#site-tipo-imovel-todos").addClass("active");
         {% endif %}
     });
-
     {% if tipo_imovel %}
         url_json = '/imoveis-por-tipo-json/{{ tipo_imovel.pk }}/';
     {% else %}
         url_json = '/imoveis-json/';
     {% endif %}
     carregarPontos();
-
 </script>
 {% endblock %}
 

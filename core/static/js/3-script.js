@@ -1,4 +1,4 @@
-/**
+/*!
  * Created by mario on 15/05/14.
  */
 // Can also be used with $(document).ready()
