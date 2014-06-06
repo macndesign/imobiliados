@@ -20,7 +20,7 @@ def concat_and_minify(base_dir, app_all, app_min, file_type):
           ' -o ' + os.path.join(base_dir, app_min) + ' --charset utf-8')
 
 
-def prepare_statics_to_deploy():
+def minify():
     concat_and_minify(os.path.join(STATIC_DIR, 'js/'), 'app.all.js', 'app.min.js', 'js')
     concat_and_minify(os.path.join(STATIC_DIR, 'css/'), 'style.all.css', 'style.min.css', 'css')
     concat_and_minify(os.path.join(STATIC_DIR, 'libs', 'maps/'), 'app.all.js', 'app.min.js', 'js')
@@ -32,23 +32,23 @@ def test():
     local('./manage.py test location')
 
 
-def commit():
+def commit_push():
     local('git add -p && git commit')
-
-
-def push():
     local('git push')
 
 
 def prepare_deploy():
     test()
-    prepare_statics_to_deploy()
-    commit()
-    push()
+    minify()
+    commit_push()
+
+
+def push_heroku():
+    run('git push heroku master')
+    run('heroku run python manage.py syncdb')
+    run('heroku run python manage.py migrate')
 
 
 def deploy():
     prepare_deploy()
-    run('git push heroku master')
-    run('heroku run python manage.py syncdb')
-    run('heroku run python manage.py migrate')
+    push_heroku()
