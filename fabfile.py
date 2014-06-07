@@ -1,6 +1,11 @@
 import os
-from fabric.api import local, run
+from fabric.api import local, env
+
 STATIC_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'core', 'static')
+env.user = 'vagrant'
+env.password = 'vagrant'
+env.hosts = ['127.0.0.1']
+port = 2222
 
 
 def runserver():
@@ -49,10 +54,16 @@ def prepare_deploy():
 
 def push_heroku():
     local('git push heroku master')
-    run('heroku run python manage.py syncdb')
-    run('heroku run python manage.py migrate')
+    local('heroku run python manage.py syncdb')
+    local('heroku run python manage.py migrate')
 
 
 def deploy():
     prepare_deploy()
+    push_heroku()
+
+
+def simple_deploy():
+    test()
+    commit_push()
     push_heroku()
