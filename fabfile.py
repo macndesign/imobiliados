@@ -1,7 +1,10 @@
 import os
 from fabric.api import local, env
 
-STATIC_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'core', 'static')
+PROJECT_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)))
+STATIC_DIR = os.path.join(PROJECT_DIR, 'core', 'static')
+FIXTURES_DIR = os.path.join(PROJECT_DIR, 'fixtures/')
+
 env.user = 'vagrant'
 env.password = 'vagrant'
 env.hosts = ['127.0.0.1']
@@ -52,10 +55,35 @@ def prepare_deploy():
     commit_push()
 
 
+def dumpdata_from_heroku():
+    # Location
+    local('heroku run python manage.py dumpdata --format=json --indent=4 location > '
+          'fixtures/location.json --app mobiliados')
+    # Core
+    local('heroku run python manage.py dumpdata --format=json --indent=4 core.TipoImovel > '
+          'fixtures/coreTipoImovel.json --app mobiliados')
+    local('heroku run python manage.py dumpdata --format=json --indent=4 core.Imovel > '
+          'fixtures/coreImovel.json --app mobiliados')
+    local('heroku run python manage.py dumpdata --format=json --indent=4 core.Imagem > '
+          'fixtures/coreImagem.json --app mobiliados')
+    local('heroku run python manage.py dumpdata --format=json --indent=4 core.Texto > '
+          'fixtures/coreTexto.json --app mobiliados')
+    local('heroku run python manage.py dumpdata --format=json --indent=4 core.ImagemRotativa > '
+          'fixtures/coreImagemRotativa.json --app mobiliados')
+    local('heroku run python manage.py dumpdata --format=json --indent=4 core.Parceiro > '
+          'fixtures/coreParceiro.json --app mobiliados')
+
+
+def loaddata_from_fixtures():
+    for fixture_file in os.listdir(FIXTURES_DIR):
+        if fixture_file.split('.')[-1] == 'json':
+            local('./manage.py loaddata ' + FIXTURES_DIR + fixture_file)
+
+
 def push_heroku():
     local('git push heroku master')
-    local('heroku run python manage.py syncdb')
-    local('heroku run python manage.py migrate')
+    local('heroku run python manage.py syncdb --app mobiliados')
+    local('heroku run python manage.py migrate --app mobiliados')
 
 
 def deploy():
