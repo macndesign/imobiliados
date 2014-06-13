@@ -96,3 +96,14 @@
     </div>
 </div>
 {% endblock %}
+{% block script %}
+<script>
+    $(document).ready(function() {
+        $("#site-home").addClass("active");
+        var dests = $('.destaque-desc');
+        var dests_greater = get_greater_height(dests);
+        var dests_set_greater_height = set_greater_height(dests, dests_greater, 191);
+        dests_set_greater_height;
+    });
+</script>
+{% endblock %}

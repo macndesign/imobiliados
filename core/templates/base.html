@@ -186,16 +186,13 @@
 </div>
 {% if DEBUG %}
     <script src="{% static 'libs/jquery/jquery-1.11.1.js' %}"></script>
+    <script src="{% static 'js/1-bootstrap.js' %}"></script>
+    <script src="{% static 'js/2-jquery.flexslider.js' %}"></script>
+    <script src="{% static 'js/3-script.js' %}"></script>
 {% else %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{% static 'js/app.min.js' %}"></script>
 {% endif %}
-<script src="{% static 'js/app.min.js' %}"></script>
-{% block script %}
-    <script>
-        $(document).ready(function(){
-            $("#site-home").addClass("active");
-        });
-    </script>
-{% endblock %}
+{% block script %}{% endblock %}
 </body>
 </html>
