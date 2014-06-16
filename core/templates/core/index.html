@@ -6,12 +6,12 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-9 rotativas">
+        <div class="col-sm-9 rotativas">
             <div class="row">
-                <div class="col-md-12 title">
+                <div class="col-sm-12 title">
                     <strong>{% trans 'Fortaleza' %}</strong>
                 </div>
-                <div class="col-md-12">
+                <div class="col-sm-12">
                     {% if rotativas %}
                     <div class="flexslider-principal flexslider">
                         <ul class="slides">
@@ -36,62 +36,69 @@
             </div>
         </div>
 
-        <div class="col-md-3 parceiros hidden-xs">
+        <div class="col-sm-3 parceiros hidden-xs">
             {% include 'core/parceiros_snip.html' %}
         </div>
 
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <h2>{% trans 'Imóveis em destaque' %}</h2>
         </div>
 
-        {% for imovel in imoveis %}
-        <div class="col-md-3 destaque-desc">
+        <div class="col-sm-12">
             <div class="row">
-                <div class="col-md-12">
-                    <h5>
-                        <a href="{% url 'core:imovel' imovel.pk %}">{{ imovel.tipo_imovel }}</a>
-                        {% comment %}
-                        <span class="label {% if imovel.alugado %}label-danger{% else %}label-default{% endif %} pull-right">
-                        #{{ imovel.codigo }} {% if imovel.alugado %}Alugado{% endif %}</span>
-                        {% endcomment %}
-                    </h5>
-                </div>
-                <div class="col-md-12">
-                    <div class="flexslider flexslider-destaque">
-                        <ul class="slides">
-                            {% for imagem in imovel.imagem_set.all|slice:":4" %}
-                            <li data-thumb="{{ imagem.thumb.url }}">
-                                <a href="{% url 'core:imovel' imovel.pk %}"><img src="{{ imagem.display.url }}" alt="{{ imagem.descricao }}" title="{{ imagem.descricao }}"/></a>
-                            </li>
-                            {% empty %}
-                                {% trans 'Sem imagem' %}
-                            {% endfor %}
-                        </ul>
+            {% for imovel in imoveis %}
+                <div class="col-sm-3 destaque-desc">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>
+                                <a href="{% url 'core:imovel' imovel.pk %}">{{ imovel.tipo_imovel }}</a>
+                                {% comment %}
+                                <span class="label {% if imovel.alugado %}label-danger{% else %}label-default{% endif %} pull-right">
+                                #{{ imovel.codigo }} {% if imovel.alugado %}Alugado{% endif %}</span>
+                                {% endcomment %}
+                            </h5>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="flexslider flexslider-destaque">
+                                <ul class="slides">
+                                    {% for imagem in imovel.imagem_set.all|slice:":4" %}
+                                    <li data-thumb="{{ imagem.thumb.url }}">
+                                        <a href="{% url 'core:imovel' imovel.pk %}"><img src="{{ imagem.display.url }}" alt="{{ imagem.descricao }}" title="{{ imagem.descricao }}"/></a>
+                                    </li>
+                                    {% empty %}
+                                        {% trans 'Sem imagem' %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            {% if imovel.nome %}<strong><a href="{% url 'core:imovel' imovel.pk %}">{{ imovel.nome|upper }}</a></strong><br>{% endif %}
+                            {{ imovel.endereco }}, {{ imovel.numero }}
+                            {% if imovel.complemento %} - {{ imovel.complemento }}{% endif %}<br/>
+                            {{ imovel.cidade.descricao }} - {{ imovel.uf.abreviatura }}<br/>
+                            {% if imovel.valor.amount > 0 %}
+                                <div class="diaria linha-preco">
+                                {% trans 'A partir de' %} <span class="label destaque-preco">{% money_localize imovel.valor %}</span>
+                                {% trans 'a diária' %}
+                                </div>
+                            {% endif %}
+                            {% if imovel.valor_mensal.amount > 0 %}
+                                <div class="mensal linha-preco">
+                                {% trans 'A partir de' %} <span class="label destaque-preco">{% money_localize imovel.valor_mensal %}</span>
+                                {% trans 'mensal' %}
+                                </div>
+                            {% endif %}
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-12">
-                    {% if imovel.nome %}<strong><a href="{% url 'core:imovel' imovel.pk %}">{{ imovel.nome|upper }}</a></strong><br>{% endif %}
-                    {{ imovel.endereco }}, {{ imovel.numero }}
-                    {% if imovel.complemento %} - {{ imovel.complemento }}{% endif %}<br/>
-                    {{ imovel.cidade.descricao }} - {{ imovel.uf.abreviatura }}<br/>
-                    {% if imovel.valor.amount > 0 %}
-                        <div class="diaria linha-preco">
-                        {% trans 'A partir de' %} <span class="label destaque-preco">{% money_localize imovel.valor %}</span>
-                        {% trans 'a diária' %}
-                        </div>
-                    {% endif %}
-                    {% if imovel.valor_mensal.amount > 0 %}
-                        <div class="mensal linha-preco">
-                        {% trans 'A partir de' %} <span class="label destaque-preco">{% money_localize imovel.valor_mensal %}</span>
-                        {% trans 'mensal' %}
-                        </div>
-                    {% endif %}
-                </div>
-            </div>
-        </div><!-- end-box -->
-        {% empty %}
-            <div class="col-md-12"><div class="alert alert-warning">{% trans 'Sem destaques' %}</div></div>
-        {% endfor %}
+                </div><!-- end-box -->
+                {% if forloop.counter|divisibleby:"4" %}
+                    </div><div class="row">
+                {% endif %}
+                {% empty %}
+                    <div class="col-sm-12"><div class="alert alert-warning">{% trans 'Sem destaques' %}</div></div>
+                {% endfor %}
+            </div><!-- end row -->
+        </div>
 
     </div>
 </div>
@@ -100,10 +107,6 @@
 <script>
     $(document).ready(function() {
         $("#site-home").addClass("active");
-        var dests = $('.destaque-desc');
-        var dests_greater = get_greater_height(dests);
-        var dests_set_greater_height = set_greater_height(dests, dests_greater, 191);
-        dests_set_greater_height;
     });
 </script>
 {% endblock %}

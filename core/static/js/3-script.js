@@ -12,6 +12,7 @@ var get_greater_height = function(objs) {
     return greater;
 };
 var set_greater_height = function(objs, greater, el_height) {
+    // el_height: Extra element height loaded after this script
     objs.each(function(i){
         this.style.height = (el_height + greater) + 'px';
     });
