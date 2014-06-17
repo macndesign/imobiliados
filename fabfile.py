@@ -44,17 +44,6 @@ def test():
     local('./manage.py test location')
 
 
-def commit_push():
-    local('git add -p && git commit')
-    local('git push')
-
-
-def prepare_deploy():
-    test()
-    minify()
-    commit_push()
-
-
 def dumpdata_from_heroku():
     # Location
     local('heroku run python manage.py dumpdata --format=json --indent=4 location > '
@@ -87,11 +76,13 @@ def push_heroku():
 
 
 def deploy():
-    prepare_deploy()
+    test()
+    minify()
+    local('git push')
     push_heroku()
 
 
 def simple_deploy():
     test()
-    commit_push()
+    local('git push')
     push_heroku()
