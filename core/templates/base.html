@@ -29,16 +29,16 @@
 
     <!-- Styles -->
     <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-    {% if DEBUG %}
+    {% comment %}{% if DEBUG %}{% endcomment %}
         <link href="{% static 'libs/flexslider/flexslider.css' %}" rel="stylesheet">
         <link href="{% static 'css/1-bootstrap.css' %}" rel="stylesheet">
         <link href="{% static 'css/2-bootstrap-theme.css' %}" rel="stylesheet">
         <link href="{% static 'css/3-famfamfam-flags.css' %}" rel="stylesheet">
         <link href="{% static 'css/4-style.css' %}" rel="stylesheet">
-    {% else %}
+    {% comment %}{% else %}
         <link href="{% static 'libs/flexslider/style.min.css' %}" rel="stylesheet">
         <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
-    {% endif %}
+    {% endif %}{% endcomment %}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -184,15 +184,15 @@
         </div>
     </div>
 </div>
-{% if DEBUG %}
+{% comment %}{% if DEBUG %}{% endcomment %}
     <script src="{% static 'libs/jquery/jquery-1.11.1.js' %}"></script>
     <script src="{% static 'js/1-bootstrap.js' %}"></script>
     <script src="{% static 'js/2-jquery.flexslider.js' %}"></script>
     <script src="{% static 'js/3-script.js' %}"></script>
-{% else %}
+{% comment %}{% else %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="{% static 'js/app.min.js' %}"></script>
-{% endif %}
+{% endif %}{% endcomment %}
 {% block script %}{% endblock %}
 </body>
 </html>
